@@ -1,38 +1,3 @@
-<head>
-<style type="text/css">
-table {
-    border: 5px dashed black;
-}
-tr:nth-child(odd) { 
-    background-color: #e9e9e9;
-}
-tr:hover {
-    background-color: #ff0000; 
-}
-.critical { 
-    background-color: #ffff00; 
-}
-
-th, td {
-        padding: 10px;
-}
-th {
-  background-color: #4CAF50;
-  color: white;
-}
-.image-property {
-    background-color: #2b91a7;
-
-}
-
-.image-property:nth-of-type(3) {
-    background-color: #18777e;
-}
-
-
-</style>
-</head>
-<body>
 <h2>Group On Tool</h2>
 <h4>Procedure</h4>
 <img src="groupon.png" alt='plant uml diagram' />
