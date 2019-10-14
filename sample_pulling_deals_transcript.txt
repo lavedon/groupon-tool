@@ -1,0 +1,3149 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20191012131331
+Username: LUKEPC\Luke
+RunAs User: LUKEPC\Luke
+Configuration Name: 
+Machine: LUKEPC (Microsoft Windows NT 10.0.17134.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile
+Process ID: 14780
+PSVersion: 5.1.17134.858
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17134.858
+BuildVersion: 10.0.17134.858
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is sample_pulling_deals_transcript.txt
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add($deals.deals[0].merchant.name)
+Cannot find an overload for "Add" and the argument count: "1".
+At line:1 char:1
++ $sampledeal.Add($deals.deals[0].merchant.name)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodException
+    + FullyQualifiedErrorId : MethodCountCouldNotFindBest
+Cannot find an overload for "Add" and the argument count: "1".
+At line:1 char:1
++ $sampledeal.Add($deals.deals[0].merchant.name)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodException
+    + FullyQualifiedErrorId : MethodCountCouldNotFindBest
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("Name", $deals.deals[0].merchant.name)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("Name", $deals.deals[0].merchant.websiteURL)
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Name'  Key being added: 
+'Name'"
+At line:1 char:1
++ $sampledeal.Add("Name", $deals.deals[0].merchant.websiteURL)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Name'  Key being added: 'Name'"
+At line:1 char:1
++ $sampledeal.Add("Name", $deals.deals[0].merchant.websiteURL)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("Website", $deals.deals[0].merchant.websiteURL)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].merchant
+
+
+id          : douglas-j-aveda-institute-grand-rapids
+uuid        : 3d6b8296-e3a4-47c8-9e6b-9775d573d715
+name        : Douglas J Aveda Institute
+websiteUrl  : http://www.douglasj.edu/
+twitterUrl  :
+ratings     :
+facebookUrl :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("GroupOn URL", "https://www.groupon.com/deals/" + $deals.deals[0].merchant.id + "/")
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("Recent Deal #1", $deals.deals[0].title)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("Recent Deal #2", $deals.deals[0].shortAnnouncementTitle)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Recent Deal #2                 Haircut with Aveda Treatment
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.remove("Recent Deal #2")
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.Add("Date Deal Started", $deals.deals[0].startAt)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22T04:00:00Z
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $cleanDate = $deals.deals[0].startAt -replace "T04:00:00Z"
+PS C:\users\luke\documents\powershell\scripts\groupontool> $cleanDate
+2017-09-22
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Date Deal Started", $cleanDate)
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Date Deal Started'  Key 
+being added: 'Date Deal Started'"
+At line:1 char:1
++ $sampledeal.add("Date Deal Started", $cleanDate)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Date Deal Started'  Key being added: 'Date
+Deal Started'"
+At line:1 char:1
++ $sampledeal.add("Date Deal Started", $cleanDate)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.remove("Date Deal Started")
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.remove("Date Deal Started")
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Date Deal Started", $cleanDate)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isnowdeal
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Deal Still Active", $deals.deals[0].isnowdeal)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeals.add("Tags", $deals.deals[0].tags)
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $deals.deals[0].tags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $deals.deals[0].tags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].tags
+
+name                    uuid
+----                    ----
+Hair Cuts & Styling     d03a8723-1260-443f-9b7d-c1c698be6c51
+Salon - Haircut - Women bead349e-b392-4d9b-a9a7-a7fba8052a9a
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $tags = @($deals.deals[0].tags.name)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $tags
+Hair Cuts & Styling
+Salon - Haircut - Women
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeals.add("Tags", $tags)
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $tags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $tags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $stringTags = $tags[0] + $tags[1]
+PS C:\users\luke\documents\powershell\scripts\groupontool> $stringTags
+Hair Cuts & StylingSalon - Haircut - Women
+PS C:\users\luke\documents\powershell\scripts\groupontool> $stringTags = $tags[0] + "   " + $tags[1]
+PS C:\users\luke\documents\powershell\scripts\groupontool> $stringTags
+Hair Cuts & Styling   Salon - Haircut - Women
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeals.add("Tags", $stringtags)
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $stringtags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $stringtags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeals.add("Tags", $stringTags)
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $stringTags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ $sampledeals.add("Tags", $stringTags)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $stringTags
+Hair Cuts & Styling   Salon - Haircut - Women
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeals
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeals
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Tags", $stringTags)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+Tags                           Hair Cuts & Styling   Salon - Haircut - Women
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options
+
+
+id                      : 65275529
+uuid                    : ef1bb990-6637-41d5-9ee4-15b437b7e765
+bookable                : False
+buyUrl                  : https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529
+customField             :
+details                 : {@{description=Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional
+                          as gift(s). Valid only for option purchased. All goods or services must be used by the same person. Merchant's
+                          standard cancellation policy applies (any fees not to exceed voucher price). }}
+discount                : @{amount=2450; currencyCode=USD; formattedAmount=$24.50; currencyExponent=2}
+discountPercent         : 55
+endAt                   : 2042-01-26T04:59:59Z
+expiresAt               : 2020-01-10T00:00:00Z
+expiresInDays           : 90
+externalUrl             :
+isLimitedQuantity       : True
+isSoldOut               : False
+maximumPurchaseQuantity : 6
+minimumPurchaseQuantity : 1
+price                   : @{amount=1950; currencyCode=USD; formattedAmount=$19.50; currencyExponent=2}
+traits                  : {}
+redemptionLocations     : {@{name=Heartside-Downtown Grand Rapids; streetAddress1=138 Commerce Avenue Southwest; streetAddress2=; state=MI;
+                          city=Grand Rapids; neighborhood=Heartside-Downtown Grand Rapids; postalCode=49503; country=US;
+                          phoneNumber=+16168083078; id=26987080; uuid=b028a1fa-4038-b06a-768b-014c87d775da; ordering=0; menu=;
+                          openHours=System.Object[]; placeAttributes=System.Object[]; lat=42.959973; lng=-85.6687479}}
+soldQuantity            : -1
+soldQuantityMessage     : -1
+specificAttributes      : @{takeoutDelivery=}
+status                  : open
+title                   : Haircut and Botanical Treatment: Valid Tuesday–Friday
+value                   : @{amount=4400; currencyCode=USD; formattedAmount=$44.00; currencyExponent=2}
+isGuestCheckoutEligible : True
+inventoryService        : @{id=voucher}
+customFields            : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Limited Quantity", $deals.deals[0].options.isLimitedQuantity)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+Tags                           Hair Cuts & Styling   Salon - Haircut - Women
+Limited Quantity               True
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Limited Quantity", $deals.deals[0].options.discountPercent)
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Limited Quantity'  Key 
+being added: 'Limited Quantity'"
+At line:1 char:1
++ $sampledeal.add("Limited Quantity", $deals.deals[0].options.discountP ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Limited Quantity'  Key being added: 'Limited
+Quantity'"
+At line:1 char:1
++ $sampledeal.add("Limited Quantity", $deals.deals[0].options.discountP ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Discount Percentage", $deals.deals[0].options.discountPercent)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+Tags                           Hair Cuts & Styling   Salon - Haircut - Women
+Limited Quantity               True
+Discount Percentage            55
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Number of Days Offer Lasts", $deals.deals[0].options.expiresInDays)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+Tags                           Hair Cuts & Styling   Salon - Haircut - Women
+Limited Quantity               True
+Discount Percentage            55
+Number of Days Offer Lasts     90
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal | Export-Csv -Path sample_deal.csv
+PS C:\users\luke\documents\powershell\scripts\groupontool> ii sample_deal.csv
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.getEnumerator() | Select-Object -Property Key,Value | 
+Export-CSV -NoTypeInformation -Path .\sample_deal.csv
+PS C:\users\luke\documents\powershell\scripts\groupontool> ii sample_deal.csv
+PS C:\users\luke\documents\powershell\scripts\groupontool> [PSCustomObject]($sampledeal.GetEnumerator() | Select-Object Name,Value) | Export-CSV -Path file.csv
+PS C:\users\luke\documents\powershell\scripts\groupontool> ii file.csv
+PS C:\users\luke\documents\powershell\scripts\groupontool> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts\groupontool
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/11/2019   4:35 AM              7 .gitignore
+-a----       10/11/2019   4:59 AM           4368 all_cities.txt
+-a----       10/12/2019  10:49 AM            325 editing_the_55_groupon_fields.txt
+-a----       10/12/2019   1:12 PM          48543 exploring_api_transcript.txt
+-a----       10/12/2019   1:48 PM            541 file.csv
+-a----       10/11/2019   4:57 AM          54269 groupon.png
+-a----       10/12/2019   6:54 AM            803 groupon.ps1
+-a----       10/11/2019   4:57 AM            795 groupon.uml
+-a----       10/11/2019   4:34 AM             34 mytoken.txt
+-a----       10/11/2019   4:33 AM             84 my_credentials.txt
+-a----       10/11/2019   4:11 AM             95 readme.md
+-a----       10/12/2019   1:47 PM            489 sample_deal.csv
+-a----       10/12/2019   1:13 PM              0 sample_pulling_deals_transcript.txt
+-a----       10/12/2019  12:11 PM            424 style.css
+-a----       10/12/2019   8:58 AM            749 the_55_groupon_fields.txt
+-a----       10/12/2019  12:18 PM           7821 what_fields_do.html
+-a----       10/12/2019   9:31 AM            428 what_fields_do.txt
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> Douglas J Aveda Institute
+Douglas : The term 'Douglas' is not recognized as the name of a cmdlet, function, script file, or operable program. 
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ Douglas J Aveda Institute
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Douglas:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+Douglas : The term 'Douglas' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of
+the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ Douglas J Aveda Institute
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Douglas:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options
+
+
+id                      : 65275529
+uuid                    : ef1bb990-6637-41d5-9ee4-15b437b7e765
+bookable                : False
+buyUrl                  : https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529
+customField             :
+details                 : {@{description=Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional
+                          as gift(s). Valid only for option purchased. All goods or services must be used by the same person. Merchant's
+                          standard cancellation policy applies (any fees not to exceed voucher price). }}
+discount                : @{amount=2450; currencyCode=USD; formattedAmount=$24.50; currencyExponent=2}
+discountPercent         : 55
+endAt                   : 2042-01-26T04:59:59Z
+expiresAt               : 2020-01-10T00:00:00Z
+expiresInDays           : 90
+externalUrl             :
+isLimitedQuantity       : True
+isSoldOut               : False
+maximumPurchaseQuantity : 6
+minimumPurchaseQuantity : 1
+price                   : @{amount=1950; currencyCode=USD; formattedAmount=$19.50; currencyExponent=2}
+traits                  : {}
+redemptionLocations     : {@{name=Heartside-Downtown Grand Rapids; streetAddress1=138 Commerce Avenue Southwest; streetAddress2=; state=MI;
+                          city=Grand Rapids; neighborhood=Heartside-Downtown Grand Rapids; postalCode=49503; country=US;
+                          phoneNumber=+16168083078; id=26987080; uuid=b028a1fa-4038-b06a-768b-014c87d775da; ordering=0; menu=;
+                          openHours=System.Object[]; placeAttributes=System.Object[]; lat=42.959973; lng=-85.6687479}}
+soldQuantity            : -1
+soldQuantityMessage     : -1
+specificAttributes      : @{takeoutDelivery=}
+status                  : open
+title                   : Haircut and Botanical Treatment: Valid Tuesday–Friday
+value                   : @{amount=4400; currencyCode=USD; formattedAmount=$44.00; currencyExponent=2}
+isGuestCheckoutEligible : True
+inventoryService        : @{id=voucher}
+customFields            : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options.redemptionLocations.phonenumber
++16168083078
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Phone Number", $deals.deals[0].options.redemptionLocations.phonenumber)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+Tags                           Hair Cuts & Styling   Salon - Haircut - Women
+Limited Quantity               True
+Discount Percentage            55
+Number of Days Offer Lasts     90
+Phone Number                   +16168083078
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("Phone Number", $deals.deals[0].options.redemptionLocations.city)
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Phone Number'  Key 
+being added: 'Phone Number'"
+At line:1 char:1
++ $sampledeal.add("Phone Number", $deals.deals[0].options.redemptionLoc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'Phone Number'  Key being added: 'Phone
+Number'"
+At line:1 char:1
++ $sampledeal.add("Phone Number", $deals.deals[0].options.redemptionLoc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.add("City", $deals.deals[0].options.redemptionLocations.city)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal
+
+Name                           Value
+----                           -----
+Name                           Douglas J Aveda Institute
+Website                        http://www.douglasj.edu/
+GroupOn URL                    https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids/
+Recent Deal #1                 $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+Date Deal Started              2017-09-22
+Deal Still Active              False
+Tags                           Hair Cuts & Styling   Salon - Haircut - Women
+Limited Quantity               True
+Discount Percentage            55
+Number of Days Offer Lasts     90
+Phone Number                   +16168083078
+City                           Grand Rapids
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.options
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options
+
+
+id                      : 65275529
+uuid                    : ef1bb990-6637-41d5-9ee4-15b437b7e765
+bookable                : False
+buyUrl                  : https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529
+customField             :
+details                 : {@{description=Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional
+                          as gift(s). Valid only for option purchased. All goods or services must be used by the same person. Merchant's
+                          standard cancellation policy applies (any fees not to exceed voucher price). }}
+discount                : @{amount=2450; currencyCode=USD; formattedAmount=$24.50; currencyExponent=2}
+discountPercent         : 55
+endAt                   : 2042-01-26T04:59:59Z
+expiresAt               : 2020-01-10T00:00:00Z
+expiresInDays           : 90
+externalUrl             :
+isLimitedQuantity       : True
+isSoldOut               : False
+maximumPurchaseQuantity : 6
+minimumPurchaseQuantity : 1
+price                   : @{amount=1950; currencyCode=USD; formattedAmount=$19.50; currencyExponent=2}
+traits                  : {}
+redemptionLocations     : {@{name=Heartside-Downtown Grand Rapids; streetAddress1=138 Commerce Avenue Southwest; streetAddress2=; state=MI;
+                          city=Grand Rapids; neighborhood=Heartside-Downtown Grand Rapids; postalCode=49503; country=US;
+                          phoneNumber=+16168083078; id=26987080; uuid=b028a1fa-4038-b06a-768b-014c87d775da; ordering=0; menu=;
+                          openHours=System.Object[]; placeAttributes=System.Object[]; lat=42.959973; lng=-85.6687479}}
+soldQuantity            : -1
+soldQuantityMessage     : -1
+specificAttributes      : @{takeoutDelivery=}
+status                  : open
+title                   : Haircut and Botanical Treatment: Valid Tuesday–Friday
+value                   : @{amount=4400; currencyCode=USD; formattedAmount=$44.00; currencyExponent=2}
+isGuestCheckoutEligible : True
+inventoryService        : @{id=voucher}
+customFields            : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals
+
+
+deals                : {@{id=douglas-j-aveda-institute-grand-rapids-2; uuid=93ed5360-8f0a-4ca0-8126-a878535e02d9; dealUrl=http://tracking.gro
+                       upon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdouglas-j-aveda-institute-gran
+                       d-rapids-2%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_source%3DGPN; title=$19.50
+                       for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value); announcementTitle=55% Off Haircut
+                       Package at Douglas J Aveda Institute; shortAnnouncementTitle=Haircut with Aveda Treatment; finePrint=Valid only at
+                       Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional as gift(s). Valid only for
+                       option purchased. All goods or services must be used by the same person. Merchant's standard cancellation policy
+                       applies (any fees not to exceed voucher price). ; highlightsHtml=<p>Before the haircut, stylists nourish strands with
+                       an organic botanical conditioner</p>; pitchHtml=<ul>
+                         <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+                       </ul>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0; soldQuantityMessage=-1;
+                       placeholderUrl=https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png;
+                       grid4ImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t300x182.jpg;
+                       grid6ImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t460x279.jpg;
+                       largeImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t440x300.jpg;
+                       mediumImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t100x100.jpg;
+                       smallImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t50x50.jpg;
+                       sidebarImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t200x300.jpg;
+                       status=open; type=groupon; accessType=extended; endAt=2042-01-26T04:59:59Z; startAt=2017-09-22T04:00:00Z;
+                       tippedAt=2017-09-21T04:00:00Z; areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False; shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Heartside-Downtown Grand Rapids; locationNote=; vip=; fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=; options=System.Object[]; says=; salesforceLink=},
+                       @{id=the-lasik-vision-institute-national-2019-grand-rapids; uuid=a9180dcc-c6ba-40ae-b87f-351e91547d0a; dealUrl=http://
+                       tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fthe-lasik-vision-i
+                       nstitute-national-2019-grand-rapids%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_sou
+                       rce%3DGPN; title=Custom LASIK Eye Surgery for One or Both Eyes at The LASIK Vision Institute (Up to 95% Off);
+                       announcementTitle=95% Off Custom LASIK at The LASIK Vision Institute ; shortAnnouncementTitle=Custom LASIK for One or
+                       Two Eyes; finePrint=Limit 1 per person, may buy 1 additional as gift(s). Consultation required; non-candidates and
+                       other refund requests will be honored before service provided. Must call to make Consultation appointment within 4
+                       weeks of purchase and complete surgery within 2 months of purchase. Valid only for option purchased at listed
+                       location(s). Individual results may vary. New patients only. $1,000 value ($500 per eye) is valid toward a custom
+                       LASIK procedure for both eyes, inclusive of Lifetime Assurance Plan. This offer can only be redeemed once per eye and
+                       cannot be combined with any other offer or promotion. Not valid toward $220 per eye procedure-only pricing.;
+                       highlightsHtml=<p>Custom LASIK eye surgery performed by an experienced specialist helps reduce the need for eye
+                       glasses and contact lenses</p>; pitchHtml=<p>LASIK treatments can help address such visual deficiencies as
+                       nearsightedness, farsightedness, and astigmatism. After a consultation to confirm candidacy, the surgery will be
+                       scheduled. On surgery day, the procedure begins with the creation of a small flap on the corneal surface. A laser
+                       then reshapes the curvature of the cornea according to the treatment customized for each patient. Next, the flap is
+                       replaced and allowed to fuse to the rest of the cornea, which doesn&#8217;t require any stitches or sutures. Eyes
+                       typically heal well enough for patients to see after one day, and most procedures result in 20/20 or better
+                       vision.</p>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0; soldQuantityMessage=-1;
+                       placeholderUrl=https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png;
+                       grid4ImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t300x182.jpg;
+                       grid6ImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t460x279.jpg;
+                       largeImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t440x300.jpg;
+                       mediumImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t100x100.jpg;
+                       smallImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t50x50.jpg;
+                       sidebarImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t200x300.jpg;
+                       status=open; type=groupon; accessType=featured; endAt=2019-10-14T03:59:59Z; startAt=2019-10-10T04:00:00Z;
+                       tippedAt=2019-10-09T04:00:00Z; areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False; shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Grand Rapids; locationNote=; vip=; fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=; options=System.Object[]; says=; salesforceLink=},
+                       @{id=n-keranique-com; uuid=bc6ca1c9-4631-4890-b34d-f508ac7877a9; dealUrl=http://tracking.groupon.com/r?tsToken=US_AFF_
+                       0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fn-keranique-com%3Fz%3Dskip%26utm_medium%3Dafl%26utm_camp
+                       aign%3D209439%26mediaId%3D212556%26utm_source%3DGPN; title=Free $20 Voucher Towards Keranique’s 30-Day Intro Kit
+                       (valued at $49.95); announcementTitle=$20 Voucher Towards Keranique’s 30-Day Intro Kit (valued at $49.95);
+                       shortAnnouncementTitle=Keranique Women's Hair Regrowth; finePrint=Purchasable in the continental US only. Limit 1 per
+                       person. Limit 1 per visit. ; highlightsHtml=<p>Subscription to Keranique provides subscribers with hair regrowth
+                       treatment, shampoo, conditioner, and more</p>; pitchHtml=<div style="font-size: 12px; padding-bottom:10px;">
+                       <img style="float: left; margin-top: 3px;margin-right: 20px; width: 29px;"
+                       src="https://img.grouponcdn.com/editorial/217doCNoLF2tuEKQVTQi5s96R7QV/21-79x76" alt="" />
+                       <div style="overflow:hidden"><strong>After purchasing this deal, you'll need to visit the website listed on your
+                       voucher to complete redemption. <a href="https://www.groupon.com/faq#faqs:content-1124" target="_blank">Learn more
+                       about redemption codes.</a></strong></div></div>
+
+                       <hr />
+
+                       <h4>Keranique’s 30-Day Intro System</h4>
+
+                       <ul>
+                         <li><strong>Includes</strong>: Hair Regrowth Treatment, Scalp Stimulating Shampoo, Volumizing Keratin Conditioner,
+                       and Lift &amp; Repair Treatment Spray</li>
+                         <li><strong>Free bonus gift</strong>: deluxe four-piece travel plus premium travel bag</li>
+                         <li><strong>Clinically-proven ingredients</strong>:Keranique&#8217;s Hair Regrowth Treatment contains one of the
+                       only FDA-approved ingredients, clinically proven to aid women’s hair regrowth.</li>
+                         <li><strong>More than a million</strong>: women have trusted Keranique to regrow thicker, stronger, healthier
+                       hair</li>
+                       </ul>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0; soldQuantityMessage=-1;
+                       placeholderUrl=https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png;
+                       grid4ImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t300x182.jpg;
+                       grid6ImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t460x279.jpg;
+                       largeImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t440x300.jpg;
+                       mediumImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t100x100.jpg;
+                       smallImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t50x50.jpg;
+                       sidebarImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t200x300.jpg; status=open;
+                       type=groupon; accessType=extended; endAt=2043-08-30T06:59:59Z; startAt=2019-04-26T04:00:00Z;
+                       tippedAt=2019-04-25T04:00:00Z; areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False; shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=; locationNote=; vip=; fulfillmentMethod=; tags=System.Object[]; displayOptions=System.Object[];
+                       textAd=; merchant=; options=System.Object[]; says=; salesforceLink=}, @{id=dr-rosners-medical-center-1;
+                       uuid=60b49d80-c2c8-4656-9319-22b108d9f06a; dealUrl=http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=
+                       https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdr-rosners-medical-center-1%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209
+                       439%26mediaId%3D212556%26utm_source%3DGPN; title=One or Two DermaSweepMD Hydrating Facials with Microdermabrasion (Up
+                       to 50% Off); announcementTitle=Up to 50% Off Facial; shortAnnouncementTitle=DermaSweepMD Hydrating Facial;
+                       finePrint=Appointment required. Merchant's standard cancellation policy applies (any fees not to exceed the price
+                       paid for the voucher). Limit 1 per person, may buy 1 additional as gift. Valid only for option purchased. All goods
+                       or services must be used by the same person. Only one voucher per person will be accepted by the business.;
+                       highlightsHtml=<p>Aesthetician uses a specialized device to lift the skin surface and sweep away dead cells, which
+                       may minimize acne and improve skin health</p>; pitchHtml=<ul>
+                         <li>Benefits of DermaSweepMD Hydrating Facial: this treatment may be beneficial for those with a variety of skin
+                       conditions, including hyperpigmentation, acne, scars, enlarged pores, and uneven skin texture. First step is
+                       microdermabrasion, then DermaSweepMD uses a specialized reverse vacuum system to infuse specific formulated products
+                       into the skin.</li>
+                       </ul>
+
+                       <h4>Learn More About Microdermabrasion</h4>
+
+                       <div style="display: inline-block; padding-bottom: 13px; padding-top: 13px; width: 100%"><a
+                       href="https://www.groupon.com/articles/what-is-microdermabrasion?aar" target="_blank"><img src="https://img.grouponcdn
+                       .com/seocms/GYXVpJ2j2DCy5QmLV4caEQTgvfi/woman-getting-microdermabrasion-1_jpg-600x390/v1/t200x200" width="150"
+                       style="float: left; margin-right:13px; margin-bottom:13px" alt="microdermabrasion" /></a><b><a
+                       href="https://www.groupon.com/articles/what-is-microdermabrasion?aar" target="_blank">Why Should I Get
+                       Microdermabrasion?</a></b><br /><br />Use our guide to microdermabrasion for info on the process, the typical cost,
+                       and how it works on acne and scars.</div>
+
+                       <h4>Learn More About Facials</h4>
+
+                       <div style="display: inline-block; padding-bottom: 13px; padding-top: 13px; width: 100%"><a
+                       href="https://www.groupon.com/articles/what-is-a-facial?aar" target="_blank"><img src="https://img.grouponcdn.com/seoc
+                       ms/4R9rwJCgEvmUd3LSBNKawuUgdQVm/hero_what-is-a-facial-anyway_mwmills_jpg-600x390/v1/t200x200" width="150"
+                       style="float: left; margin-right:13px; margin-bottom:13px" alt="facial" /></a><b><a
+                       href="https://www.groupon.com/articles/what-is-a-facial?aar" target="_blank">Facials: What Should You
+                       Expect?</a></b><br /><br />We answer how much should it cost and how long it should take. Plus: what are they gonna
+                       do to your face?</div>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0; soldQuantityMessage=-1;
+                       placeholderUrl=https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png;
+                       grid4ImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t300x182.jpg;
+                       grid6ImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t460x279.jpg;
+                       largeImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t440x300.jpg;
+                       mediumImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t100x100.jpg;
+                       smallImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t50x50.jpg;
+                       sidebarImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t200x300.jpg; status=open;
+                       type=groupon; accessType=extended; endAt=2042-09-26T03:59:59Z; startAt=2018-05-23T04:00:00Z;
+                       tippedAt=2018-05-22T04:00:00Z; areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False; shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Grand Rapids; locationNote=; vip=; fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=; options=System.Object[]; says=; salesforceLink=}...}
+facets               : {}
+pagination           : @{offset=0; count=118}
+relevanceService     : @{persistentRanking=updated; context=web_all; treatment=1dc7cdc8-b09e-84bf-faf0-55e308686758}
+dealSubsetAttributes : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deal[0]
+Cannot index into a null array.
+At line:1 char:1
++ $deals.deal[0]
++ ~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : NullArray
+Cannot index into a null array.
+At line:1 char:1
++ $deals.deal[0]
++ ~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : NullArray
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grouponrating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grouponRating
+PS C:\users\luke\documents\powershell\scripts\groupontool> H:
+PS H:\> .\backup.ps1
+Syncing USB flashdrive with C:\Users\Luke\main_sm
+
+ Log File : H:\sm_backup.txt
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Saturday, October 12, 2019 3:03:19 PM
+   Source = H:\
+     Dest : C:\Users\Luke\main_sm\
+
+    Files : *.*
+
+  Options : *.* /TEE /DCOPY:DA /COPY:DAT /ETA /IS /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+                          48    H:\
+          *EXTRA File              12288        .21_day_interval_exp.txt.swp
+          *EXTRA File              32768        .import_educaction.txt.swp
+          *EXTRA File              12288        .import_me.txt.swn
+          *EXTRA File              12288        .jason_bell.txt.swp
+          *EXTRA File              16384        .jason_bell_notes.txt.swp
+          *EXTRA File              12288        .notes_for_ed_9_12.txt.swp
+          *EXTRA File              12288        .pauly_notes_for_9_12.txt.swp
+          *EXTRA File              12288        .ps_chap3_notes.txt.swp
+          *EXTRA File              16384        .TAGS.txt.swp
+          *EXTRA File                338        21_day_interval_exp.txt
+          *EXTRA File              39722        auto_var.txt
+          *EXTRA File                281        checklist.txt
+          *EXTRA File                 21        Database.kdb.lock
+          *EXTRA File               1158        dmarc.txt
+          *EXTRA File                 56        domains.txt
+          *EXTRA File                491        ed.txt
+          *EXTRA File                  0        ed_domains.txt
+          *EXTRA File                289        email_ed_8_19_2019.txt
+          *EXTRA File               1955        email_to_ed_notes.txt
+          *EXTRA File              21762        for_sm.txt
+          *EXTRA File             13.9 m        FreeFileSync_10.15_Windows_Setup.exe
+          *EXTRA File              17600        import_educaction.txt
+          *EXTRA File                331        import_text.txt
+          *EXTRA File              10969        jason_bell_notes.txt
+          *EXTRA File                  0        notes_for_ed_9_12.txt
+          *EXTRA File               4294        paths.txt
+          *EXTRA File                499        pauly_notes_for_9_12.txt
+          *EXTRA File                  3        ps_transcript.txt
+          *EXTRA File                476        questions_for_charles.txt
+          *EXTRA File                454        quotes_to_import.txt
+          *EXTRA File               1584        sm_comment.txt
+          *EXTRA File               1855        transcript.txt
+          *EXTRA File               6758        tucker_import.txt
+          *EXTRA File               3344        william_8_29.txt
+          *EXTRA File               1949        youtube_transcripts.txt
+          *EXTRA File               1762        youtube_transcripts_2.txt
+          *EXTRA File              17600        youtube_transcripts_3.txt
+          *EXTRA File               2682        youtube_transcripts_4.txt
+100%        Same                     264        -item -name test.csv -itemtype file
+100%        Same                   12288        .ed_domains.txt.swp     15:03 -> 15:03
+100%        Same                   12288        .impore_me.txt.swp      15:03 -> 15:03
+100%        Same                   12288        .import_me.txt.swo      15:03 -> 15:03
+100%        Newer                  12288        .import_me.txt.swp      15:03 -> 15:03
+100%        Same                   12288        .sm_comment.txt.swp     15:03 -> 15:03
+100%        Same                    3944        8_22.gef        15:03 -> 15:03
+100%        Same                       2        audit.ps1       15:03 -> 15:03
+100%        Same                     862        backup.ps1      15:03 -> 15:03
+100%        Same                    1448        BOOTEX.LOG      15:03 -> 15:03
+100%        Same                      67        close_term.ahk  15:03 -> 15:03
+100%        Same                   77436        Database.kdb    15:03 -> 15:03
+100%        Newer                  37182        Database.kdbx   15:03 -> 15:03
+100%        Same                   5.1 m        future_flashback.mp3    15:03 -> 15:03
+100%        Newer                    310        import_me.txt   15:03 -> 15:03
+100%        Newer                    950        lukes_knowledge.Kno     15:03 -> 15:03
+100%        Same                       0        power_shell_notes.txt   15:03 -> 15:03
+100%        Newer                    187        ps_chap3_notes.txt      15:03 -> 15:03
+100%        Same                     422        redirect.ps1    15:03 -> 15:03
+100%        Newer                      2        sm_backup.txt   15:03 -> 15:03
+100%        Same                   41733        TAGS.txt        15:03 -> 15:03
+100%        Same                     769        temp.html       15:03 -> 15:03
+100%        Same                       2        temp.ps1        15:03 -> 15:03
+100%        Same                     264        test.csv        15:03 -> 15:03
+100%        Newer                  12288        _.svs           15:03 -> 15:03
+100%        Same                   12288        _.svt           15:03 -> 15:03
+100%        Same                   12288        _.svu           15:03 -> 15:03
+100%        Same                   12288        _.svv           15:03 -> 15:03
+100%        Same                   12288        _.svw           15:03 -> 15:03
+100%        Same                   12288        _.svx           15:03 -> 15:03
+100%        Same                   12288        _.svy           15:03 -> 15:03
+100%        Same                   12288        _.svz           15:03 -> 15:03
+100%        Same                   12288        _.swa           15:03 -> 15:03
+100%        Same                   12288        _.swb           15:03 -> 15:03
+100%        Same                   12288        _.swc           15:03 -> 15:03
+100%        Same                   12288        _.swd           15:03 -> 15:03
+100%        Same                   12288        _.swe           15:03 -> 15:03
+100%        Same                   12288        _.swf           15:03 -> 15:03
+100%        Same                   12288        _.swg           15:03 -> 15:03
+100%        Same                   12288        _.swh           15:03 -> 15:03
+100%        Same                   12288        _.swi           15:03 -> 15:03
+100%        Same                   12288        _.swj           15:03 -> 15:03
+100%        Same                   12288        _.swk           15:03 -> 15:03
+100%        Same                   12288        _.swl           15:03 -> 15:03
+100%        Same                   12288        _.swm           15:03 -> 15:03
+100%        Same                   12288        _.swn           15:03 -> 15:03
+100%        Same                   12288        _.swo           15:03 -> 15:03
+100%        Same                   12288        _.swp           15:03 -> 15:03
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         0
+   Files :        48        48         0         0         0        38
+   Bytes :    5.67 m    5.67 m         0         0         0   14.16 m
+   Times :   0:00:01   0:00:01                       0:00:00   0:00:00
+
+
+   Speed :             4857444 Bytes/sec.
+   Speed :             277.945 MegaBytes/min.
+   Ended : Saturday, October 12, 2019 3:03:20 PM
+Making a zip file of the USB drive.
+Removing: C:\users\luke\onedrive\zipped_usb.zip
+Copying zipped_usb.zip to C:\users\luke\onedrive\
+Removing: c:\users\luke\iCloudDrive\zipped_usb.zip
+Copying zipped_usb.zip to c:\users\luke\iCloudDrive\
+Removing: c:\users\luke\GoogleDrive\zipped_usb.zip
+Copying zipped_usb.zip to c:\users\luke\GoogleDrive\
+Syncing all SuperMemo full backups.
+
+ Log File : H:\sm_backup.txt
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Saturday, October 12, 2019 3:23:07 PM
+   Source : C:\users\luke\My Documents\
+     Dest : E:\
+
+    Files : *.*
+
+  Options : *.* /TEE /DCOPY:DA /COPY:DAT /ETA /IS /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+                           7    C:\users\luke\My Documents\
+        *EXTRA Dir        -1    E:\$RECYCLE.BIN\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-02 01-32-13)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-06 04-41-07)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-07 07-07-39)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-16 04-02-26)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-16 11-07-05)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-20 19-27-44)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-24 02-08-59)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-24 02-24-45)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-26 17-45-28)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-09-17 09-04-04)))\
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2018-09-22 02-47-22)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-09-24 19-20-58)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-09-26 19-52-10)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-03 12-43-04)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-14 06-53-35)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-18 08-21-21)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-22 14-53-08)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-26 10-06-49)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-28 19-15-59)))\
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2018-11-04 17-16-21)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-10 06-00-38)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-17 12-14-23)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-26 10-44-08)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-29 22-53-56)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-03 19-41-54)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-09 06-47-35)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-12 06-24-28)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-16 07-31-41)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-22 05-09-38)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-30 01-49-40)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-0\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-01 19-18-51)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-05 04-34-03)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-08 02-13-25)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-13 01-40-13)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-16 07-54-03)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-19 17-03-40)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-20 17-00-57)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-22 16-37-59)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-23 12-14-59)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-28 03-40-25)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-01 21-13-48)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-02 18-49-17)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-04 01-42-33)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-05 01-06-12)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-06 01-41-04)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-07 00-45-24)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-08 03-46-57)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-10 04-58-54)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-11 06-57-27)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-12 05-55-11)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-14 09-06-43)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-15 00-29-36)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-17 18-59-28)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-22 02-08-15)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-28 11-48-00)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-02 06-32-09)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-04 00-39-57)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-15 01-56-00)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-20 22-24-10)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-01 02-31-33)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-01 13-07-55)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-02 15-02-46)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-04 03-03-21)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-14 07-18-38)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-20 00-21-19)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-25 14-35-56)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-27 02-07-21)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-04 16-41-35)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-06 11-55-49)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-07 15-39-50)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-09 01-25-54)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-09 14-43-13)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-11 23-06-10)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-12 18-26-09)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-13 20-13-52)))\
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2019-05-20 03-01-40)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-22 05-26-47)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-26 00-10-24)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-30 14-32-10)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-03 11-01-42)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-04 15-01-45)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-07 23-33-43)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-08 09-03-54)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-09 22-01-06)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-10 21-57-08)))\
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2019-06-21 23-38-00)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-25 01-46-01)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-26 00-20-34)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-28 16-27-34)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-30 22-58-26)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-01 03-37-38)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-02 05-10-35)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-03 04-04-15)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-04 04-08-00)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-08 01-01-52)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-09 09-56-17)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-09 23-33-01)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-10 01-55-21)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-11 02-12-00)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-12 03-10-03)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-12 11-03-56)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-13 10-41-56)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-14 06-16-16)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-15 16-26-09)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-17 09-15-25)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-18 14-19-05)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-19 12-39-32)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-20 14-13-17)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-21 14-11-37)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-22 19-40-59)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-23 14-59-21)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-24 22-57-08)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-25 21-53-11)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-26 04-16-45)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-27 10-54-23)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-29 22-56-29)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-30 13-38-32)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-01 02-48-51)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-05 11-23-20)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-06 12-33-22)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-09 00-19-18)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-09 16-24-50)))\
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2019-08-10 03-06-22)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-11 00-10-27)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-15 01-05-45)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-18 14-12-26)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-19 03-57-03)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-20 01-50-09)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-20 14-25-54)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-21 21-02-47)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-25 20-08-34)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-27 07-53-10)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-31 12-51-22)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-09-02 06-57-49)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-09-05 14-46-00)))\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-09-06 14-07-28)))\
+        *EXTRA Dir        -1    E:\BackUp of FlashDrive\
+        *EXTRA Dir        -1    E:\backup_lukes_knowledge1_8_2016\
+        *EXTRA Dir        -1    E:\System Volume Information\
+        *EXTRA Dir        -1    E:\Tempo\
+        *EXTRA Dir        -1    E:\Writing Backup\
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2018-08-02 01-32-13))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2018-12-03 19-41-54))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-0.Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-02-01 21-13-48))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-05-04 16-41-35))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-03 11-01-42))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-04 15-01-45))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-07 23-33-43))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-08 09-03-54))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-09 22-01-06))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-10 21-57-08))).Kno
+          *EXTRA File                950        (((Backup of LUKES_KNOWLEDGE created on 2019-06-21 23-38-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-25 01-46-01))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-26 00-20-34))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-28 16-27-34))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-30 22-58-26))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-01 03-37-38))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-02 05-10-35))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-03 04-04-15))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-04 04-08-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-08 01-01-52))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-09 09-56-17))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-09 23-33-01))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-10 01-55-21))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-11 02-12-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-12 03-10-03))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-12 11-03-56))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-13 10-41-56))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-14 06-16-16))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-15 16-26-09))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-17 09-15-25))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-18 14-19-05))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-19 12-39-32))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-20 14-13-17))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-21 14-11-37))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-22 19-40-59))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-23 14-59-21))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-24 22-57-08))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-25 21-53-11))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-26 04-16-45))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-27 10-54-23))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-29 22-56-29))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-30 13-38-32))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-01 02-48-51))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-05 11-23-20))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-06 12-33-22))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-09 00-19-18))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-09 16-24-50))).Kno
+          *EXTRA File                950        (((Backup of LUKES_KNOWLEDGE created on 2019-08-10 03-06-22))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-11 00-10-27))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-15 01-05-45))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-18 14-12-26))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-19 03-57-03))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-20 01-50-09))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-20 14-25-54))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-21 21-02-47))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-25 20-08-34))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-27 07-53-10))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-31 12-51-22))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-02 06-57-49))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-05 14-46-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-06 14-07-28))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-11 10-53-41))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-13 04-29-56))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-14 18-29-15))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-15 02-52-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-25 08-26-17))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-27 20-47-47))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-28 23-16-33))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-30 16-19-38))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-02 21-27-04))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-04 13-07-33))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-05 22-08-16))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-10 06-32-12))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-11 14-48-27))).Kno
+          *EXTRA File              12935        PowerShell_transcript.LUKEPC._KATfoNm.20190822021047.txt
+100%        New File                4368        all_cities.txt
+100%        New File                 339        autohotkey      15:23 -> 15:23
+100%        Same                     402        desktop.ini     15:23 -> 15:23
+100%        New File              383380        PowerShell_transcript.LUKEPC.U3HIo2Gl.20191012083832.txt        15:23 -> 15:24
+100%        Same                   11355        test.docx       15:23 -> 15:23
+100%        Newer                185.9 m        zipped_usb.zip  15:23 -> 15:39
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0       143
+   Files :         7         6         1         0         0        76
+   Bytes :  186.33 m  186.33 m        16         0         0    82.2 k
+   Times :   0:00:05   0:00:03                       0:00:00   0:00:01
+
+
+   Speed :            50501597 Bytes/sec.
+   Speed :            2889.724 MegaBytes/min.
+   Ended : Saturday, October 12, 2019 3:23:12 PM
+PS H:\> c:
+PS C:\users\luke\documents\powershell\scripts\groupontool> cd ..
+PS C:\users\luke\documents\powershell\scripts> cd ..
+PS C:\users\luke\documents\powershell> cd ..
+PS C:\users\luke\documents> dir
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+-a----       10/10/2019   3:57 PM           4368 all_cities.txt
+-a----       10/12/2019   7:04 AM            339 autohotkey
+-a----       10/12/2019   8:50 AM         383380 PowerShell_transcript.LUKEPC.U3HIo2Gl.20191012083832.txt
+-a----        8/10/2019   2:40 AM          11355 test.docx
+-a----       10/12/2019   3:22 PM      194990835 zipped_usb.zip
+
+
+PS C:\users\luke\documents> cd autohotkey
+cd : Cannot find path 'autohotkey' because it does not exist.
+At line:1 char:1
++ cd autohotkey
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (autohotkey:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+cd : Cannot find path 'autohotkey' because it does not exist.
+At line:1 char:1
++ cd autohotkey
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (autohotkey:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\users\luke\documents> dir -directory
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+
+
+PS C:\users\luke\documents> $deals.deals[0].grouponrating
+PS C:\users\luke\documents> $deals.deals[1].grouponrating
+PS C:\users\luke\documents> $deals.deals[2].grouponrating
+PS C:\users\luke\documents> $deals.deals[3].grouponrating
+PS C:\users\luke\documents> $deals.deals[4].grouponrating
+PS C:\users\luke\documents> $deals.deals[5].grouponrating
+PS C:\users\luke\documents> $deals
+
+
+deals                : {@{id=douglas-j-aveda-institute-grand-rapids-2;
+                       uuid=93ed5360-8f0a-4ca0-8126-a878535e02d9; dealUrl=http://tracking.groupon.co
+                       m/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeal
+                       s%2Fdouglas-j-aveda-institute-grand-rapids-2%3Fz%3Dskip%26utm_medium%3Dafl%26
+                       utm_campaign%3D209439%26mediaId%3D212556%26utm_source%3DGPN; title=$19.50
+                       for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44
+                       Value); announcementTitle=55% Off Haircut Package at Douglas J Aveda
+                       Institute; shortAnnouncementTitle=Haircut with Aveda Treatment;
+                       finePrint=Valid only at Grand Rapids location. Appointment required. Limit 5
+                       per person, may buy 1 additional as gift(s). Valid only for option
+                       purchased. All goods or services must be used by the same person. Merchant's
+                       standard cancellation policy applies (any fees not to exceed voucher price).
+                       ; highlightsHtml=<p>Before the haircut, stylists nourish strands with an
+                       organic botanical conditioner</p>; pitchHtml=<ul>
+                         <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+                       </ul>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.grouponcdn.com/i
+                       mages/groupon/grayPlaceholder.png; grid4ImageUrl=https://img.grouponcdn.com/d
+                       eal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t300x182.jpg; grid6ImageUrl=h
+                       ttps://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t4
+                       60x279.jpg; largeImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYA
+                       JX2psxT1v/34-1023x613/v1/t440x300.jpg; mediumImageUrl=https://img.grouponcdn.
+                       com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t100x100.jpg; smallImage
+                       Url=https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/
+                       v1/t50x50.jpg; sidebarImageUrl=https://img.grouponcdn.com/deal/344un4st2sSAT8
+                       xoTYAJX2psxT1v/34-1023x613/v1/t200x300.jpg; status=open; type=groupon;
+                       accessType=extended; endAt=2042-01-26T04:59:59Z;
+                       startAt=2017-09-22T04:00:00Z; tippedAt=2017-09-21T04:00:00Z;
+                       areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[];
+                       division=; grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True;
+                       isTravelBookableDeal=False; isGliveInventoryDeal=False;
+                       isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Heartside-Downtown Grand Rapids; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[]; displayOptions=System.Object[];
+                       textAd=; merchant=; options=System.Object[]; says=; salesforceLink=},
+                       @{id=the-lasik-vision-institute-national-2019-grand-rapids;
+                       uuid=a9180dcc-c6ba-40ae-b87f-351e91547d0a; dealUrl=http://tracking.groupon.co
+                       m/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeal
+                       s%2Fthe-lasik-vision-institute-national-2019-grand-rapids%3Fz%3Dskip%26utm_me
+                       dium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_source%3DGPN;
+                       title=Custom LASIK Eye Surgery for One or Both Eyes at The LASIK Vision
+                       Institute (Up to 95% Off); announcementTitle=95% Off Custom LASIK at The
+                       LASIK Vision Institute ; shortAnnouncementTitle=Custom LASIK for One or Two
+                       Eyes; finePrint=Limit 1 per person, may buy 1 additional as gift(s).
+                       Consultation required; non-candidates and other refund requests will be
+                       honored before service provided. Must call to make Consultation appointment
+                       within 4 weeks of purchase and complete surgery within 2 months of purchase.
+                       Valid only for option purchased at listed location(s). Individual results
+                       may vary. New patients only. $1,000 value ($500 per eye) is valid toward a
+                       custom LASIK procedure for both eyes, inclusive of Lifetime Assurance Plan.
+                       This offer can only be redeemed once per eye and cannot be combined with any
+                       other offer or promotion. Not valid toward $220 per eye procedure-only
+                       pricing.; highlightsHtml=<p>Custom LASIK eye surgery performed by an
+                       experienced specialist helps reduce the need for eye glasses and contact
+                       lenses</p>; pitchHtml=<p>LASIK treatments can help address such visual
+                       deficiencies as nearsightedness, farsightedness, and astigmatism. After a
+                       consultation to confirm candidacy, the surgery will be scheduled. On surgery
+                       day, the procedure begins with the creation of a small flap on the corneal
+                       surface. A laser then reshapes the curvature of the cornea according to the
+                       treatment customized for each patient. Next, the flap is replaced and
+                       allowed to fuse to the rest of the cornea, which doesn&#8217;t require any
+                       stitches or sutures. Eyes typically heal well enough for patients to see
+                       after one day, and most procedures result in 20/20 or better vision.</p>;
+                       soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.grouponcdn.com/i
+                       mages/groupon/grayPlaceholder.png; grid4ImageUrl=https://img.grouponcdn.com/d
+                       eal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t300x182.jpg; grid6ImageUrl=h
+                       ttps://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t4
+                       60x279.jpg; largeImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg
+                       3wWTiKgg/bH-2048x1228/v1/t440x300.jpg; mediumImageUrl=https://img.grouponcdn.
+                       com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/v1/t100x100.jpg; smallImage
+                       Url=https://img.grouponcdn.com/deal/bHEuee89PCEePXywvxg3wWTiKgg/bH-2048x1228/
+                       v1/t50x50.jpg; sidebarImageUrl=https://img.grouponcdn.com/deal/bHEuee89PCEePX
+                       ywvxg3wWTiKgg/bH-2048x1228/v1/t200x300.jpg; status=open; type=groupon;
+                       accessType=featured; endAt=2019-10-14T03:59:59Z;
+                       startAt=2019-10-10T04:00:00Z; tippedAt=2019-10-09T04:00:00Z;
+                       areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[];
+                       division=; grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True;
+                       isTravelBookableDeal=False; isGliveInventoryDeal=False;
+                       isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Grand Rapids; locationNote=; vip=; fulfillmentMethod=;
+                       tags=System.Object[]; displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=}, @{id=n-keranique-com;
+                       uuid=bc6ca1c9-4631-4890-b34d-f508ac7877a9; dealUrl=http://tracking.groupon.co
+                       m/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeal
+                       s%2Fn-keranique-com%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26m
+                       ediaId%3D212556%26utm_source%3DGPN; title=Free $20 Voucher Towards
+                       Keranique’s 30-Day Intro Kit (valued at $49.95); announcementTitle=$20
+                       Voucher Towards Keranique’s 30-Day Intro Kit (valued at $49.95);
+                       shortAnnouncementTitle=Keranique Women's Hair Regrowth;
+                       finePrint=Purchasable in the continental US only. Limit 1 per person. Limit
+                       1 per visit. ; highlightsHtml=<p>Subscription to Keranique provides
+                       subscribers with hair regrowth treatment, shampoo, conditioner, and
+                       more</p>; pitchHtml=<div style="font-size: 12px; padding-bottom:10px;">
+                       <img style="float: left; margin-top: 3px;margin-right: 20px; width: 29px;" sr
+                       c="https://img.grouponcdn.com/editorial/217doCNoLF2tuEKQVTQi5s96R7QV/21-79x76
+                       " alt="" />
+                       <div style="overflow:hidden"><strong>After purchasing this deal, you'll need
+                       to visit the website listed on your voucher to complete redemption. <a
+                       href="https://www.groupon.com/faq#faqs:content-1124" target="_blank">Learn
+                       more about redemption codes.</a></strong></div></div>
+
+                       <hr />
+
+                       <h4>Keranique’s 30-Day Intro System</h4>
+
+                       <ul>
+                         <li><strong>Includes</strong>: Hair Regrowth Treatment, Scalp Stimulating
+                       Shampoo, Volumizing Keratin Conditioner, and Lift &amp; Repair Treatment
+                       Spray</li>
+                         <li><strong>Free bonus gift</strong>: deluxe four-piece travel plus
+                       premium travel bag</li>
+                         <li><strong>Clinically-proven ingredients</strong>:Keranique&#8217;s Hair
+                       Regrowth Treatment contains one of the only FDA-approved ingredients,
+                       clinically proven to aid women’s hair regrowth.</li>
+                         <li><strong>More than a million</strong>: women have trusted Keranique to
+                       regrow thicker, stronger, healthier hair</li>
+                       </ul>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.grouponcdn.com/i
+                       mages/groupon/grayPlaceholder.png; grid4ImageUrl=https://img.grouponcdn.com/d
+                       eal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t300x182.jpg; grid6ImageUrl=ht
+                       tps://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t460
+                       x279.jpg; largeImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyU
+                       VbgcW8p/2a-960x582/v1/t440x300.jpg; mediumImageUrl=https://img.grouponcdn.com
+                       /deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t100x100.jpg; smallImageUrl=
+                       https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5AyUVbgcW8p/2a-960x582/v1/t5
+                       0x50.jpg; sidebarImageUrl=https://img.grouponcdn.com/deal/2aQEF5xmL6LKhE6cE5A
+                       yUVbgcW8p/2a-960x582/v1/t200x300.jpg; status=open; type=groupon;
+                       accessType=extended; endAt=2043-08-30T06:59:59Z;
+                       startAt=2019-04-26T04:00:00Z; tippedAt=2019-04-25T04:00:00Z;
+                       areas=System.Object[]; channels=System.Object[]; dealTypes=System.Object[];
+                       division=; grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True;
+                       isTravelBookableDeal=False; isGliveInventoryDeal=False;
+                       isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=; locationNote=; vip=; fulfillmentMethod=;
+                       tags=System.Object[]; displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=},
+                       @{id=dr-rosners-medical-center-1; uuid=60b49d80-c2c8-4656-9319-22b108d9f06a;
+                       dealUrl=http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=ht
+                       tps%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdr-rosners-medical-center-1%3Fz%3Dskip%
+                       26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_source%3D
+                       GPN; title=One or Two DermaSweepMD Hydrating Facials with Microdermabrasion
+                       (Up to 50% Off); announcementTitle=Up to 50% Off Facial;
+                       shortAnnouncementTitle=DermaSweepMD Hydrating Facial; finePrint=Appointment
+                       required. Merchant's standard cancellation policy applies (any fees not to
+                       exceed the price paid for the voucher). Limit 1 per person, may buy 1
+                       additional as gift. Valid only for option purchased. All goods or services
+                       must be used by the same person. Only one voucher per person will be
+                       accepted by the business.; highlightsHtml=<p>Aesthetician uses a specialized
+                       device to lift the skin surface and sweep away dead cells, which may
+                       minimize acne and improve skin health</p>; pitchHtml=<ul>
+                         <li>Benefits of DermaSweepMD Hydrating Facial: this treatment may be
+                       beneficial for those with a variety of skin conditions, including
+                       hyperpigmentation, acne, scars, enlarged pores, and uneven skin texture.
+                       First step is microdermabrasion, then DermaSweepMD uses a specialized
+                       reverse vacuum system to infuse specific formulated products into the
+                       skin.</li>
+                       </ul>
+
+                       <h4>Learn More About Microdermabrasion</h4>
+
+                       <div style="display: inline-block; padding-bottom: 13px; padding-top: 13px;
+                       width: 100%"><a
+                       href="https://www.groupon.com/articles/what-is-microdermabrasion?aar"
+                       target="_blank"><img src="https://img.grouponcdn.com/seocms/GYXVpJ2j2DCy5QmLV
+                       4caEQTgvfi/woman-getting-microdermabrasion-1_jpg-600x390/v1/t200x200"
+                       width="150" style="float: left; margin-right:13px; margin-bottom:13px"
+                       alt="microdermabrasion" /></a><b><a
+                       href="https://www.groupon.com/articles/what-is-microdermabrasion?aar"
+                       target="_blank">Why Should I Get Microdermabrasion?</a></b><br /><br />Use
+                       our guide to microdermabrasion for info on the process, the typical cost,
+                       and how it works on acne and scars.</div>
+
+                       <h4>Learn More About Facials</h4>
+
+                       <div style="display: inline-block; padding-bottom: 13px; padding-top: 13px;
+                       width: 100%"><a href="https://www.groupon.com/articles/what-is-a-facial?aar"
+                       target="_blank"><img src="https://img.grouponcdn.com/seocms/4R9rwJCgEvmUd3LSB
+                       NKawuUgdQVm/hero_what-is-a-facial-anyway_mwmills_jpg-600x390/v1/t200x200"
+                       width="150" style="float: left; margin-right:13px; margin-bottom:13px"
+                       alt="facial" /></a><b><a
+                       href="https://www.groupon.com/articles/what-is-a-facial?aar"
+                       target="_blank">Facials: What Should You Expect?</a></b><br /><br />We
+                       answer how much should it cost and how long it should take. Plus: what are
+                       they gonna do to your face?</div>; soldQuantity=-1;
+                       limitedQuantityRemaining=; tippingPoint=0; soldQuantityMessage=-1; placeholde
+                       rUrl=https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png;
+                        grid4ImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-
+                       2048x1229/v1/t300x182.jpg; grid6ImageUrl=https://img.grouponcdn.com/iam/oJ9JU
+                       8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t460x279.jpg; largeImageUrl=https://im
+                       g.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t440x300.jpg
+                       ; mediumImageUrl=https://img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/o
+                       J-2048x1229/v1/t100x100.jpg; smallImageUrl=https://img.grouponcdn.com/iam/oJ9
+                       JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t50x50.jpg; sidebarImageUrl=https://
+                       img.grouponcdn.com/iam/oJ9JU8ouWnz5M61ebHkgt3rjSDM/oJ-2048x1229/v1/t200x300.j
+                       pg; status=open; type=groupon; accessType=extended;
+                       endAt=2042-09-26T03:59:59Z; startAt=2018-05-23T04:00:00Z;
+                       tippedAt=2018-05-22T04:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False; isTipped=True;
+                       isTravelBookableDeal=False; isGliveInventoryDeal=False;
+                       isAutoRefundEnabled=False; isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Grand Rapids; locationNote=; vip=; fulfillmentMethod=;
+                       tags=System.Object[]; displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=}...}
+facets               : {}
+pagination           : @{offset=0; count=118}
+relevanceService     : @{persistentRanking=updated; context=web_all;
+                       treatment=1dc7cdc8-b09e-84bf-faf0-55e308686758}
+dealSubsetAttributes : {}
+
+
+
+PS C:\users\luke\documents> cd powershell
+PS C:\users\luke\documents\powershell> dir
+
+
+    Directory: C:\users\luke\documents\powershell
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        7/21/2019   4:37 PM                Help
+d-----       10/11/2019   3:40 AM                Scripts
+
+
+PS C:\users\luke\documents\powershell> cd scripts
+PS C:\users\luke\documents\powershell\scripts> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/12/2019   1:48 PM                GrouPonTool
+d-----         8/2/2019  12:48 PM                InstalledScriptInfos
+
+
+PS C:\users\luke\documents\powershell\scripts> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/12/2019   1:48 PM                GrouPonTool
+d-----         8/2/2019  12:48 PM                InstalledScriptInfos
+
+
+PS C:\users\luke\documents\powershell\scripts> cd groupontool
+PS C:\users\luke\documents\powershell\scripts\groupontool> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts\groupontool
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/11/2019   4:35 AM              7 .gitignore
+-a----       10/11/2019   4:59 AM           4368 all_cities.txt
+-a----       10/12/2019  10:49 AM            325 editing_the_55_groupon_fields.txt
+-a----       10/12/2019   1:12 PM          48543 exploring_api_transcript.txt
+-a----       10/12/2019   1:48 PM            541 file.csv
+-a----       10/11/2019   4:57 AM          54269 groupon.png
+-a----       10/12/2019   6:54 AM            803 groupon.ps1
+-a----       10/11/2019   4:57 AM            795 groupon.uml
+-a----       10/11/2019   4:34 AM             34 mytoken.txt
+-a----       10/11/2019   4:33 AM             84 my_credentials.txt
+-a----       10/11/2019   4:11 AM             95 readme.md
+-a----       10/12/2019   1:47 PM            489 sample_deal.csv
+-a----       10/12/2019   5:43 PM          91070 sample_pulling_deals_transcript.txt
+-a----       10/12/2019  12:11 PM            424 style.css
+-a----       10/12/2019   8:58 AM            749 the_55_groupon_fields.txt
+-a----       10/12/2019  12:18 PM           7821 what_fields_do.html
+-a----       10/12/2019   9:31 AM            428 what_fields_do.txt
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> ii what_fields_do.html
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[58].grouponRating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[58].displayoptions
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[58]
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[58]
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48]
+
+
+id                       : sj-design-hair-studio-1
+uuid                     : 0c2ad6ef-7096-6f32-49bf-8345576dd7e0
+dealUrl                  : http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%
+                           3A%2F%2Fwww.groupon.com%2Fdeals%2Fsj-design-hair-studio-1%3Fz%3Dskip%26ut
+                           m_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_source%3D
+                           GPN
+title                    : $33.50 for a Haircut, Deep Condition, and Blow-Dry at SJ Design Hair
+                           Studio ($64 Value)
+announcementTitle        : 47% Off Haircut and Deep Condition at SJ Design Hair Studio
+shortAnnouncementTitle   : Cut, Deep Condition, & Blow-Dry
+finePrint                : Appointment required. Limit 1 per person, may buy 1 additional as
+                           gift(s). Limit 1 per visit. All goods or services must be used by the
+                           same person. Not valid for clients active within the past 6 month(s).
+                           Merchant's standard cancellation policy applies (any fees not to exceed
+                           voucher price).
+highlightsHtml           : <p>Stylists trim hair and add strength and silkiness with a deep
+                           condition before blow-drying hair into a street-ready style</p>
+pitchHtml                : <h4>The Deal</h4>
+
+                           <ul>
+                             <li>$33.50 for a haircut with a deep-conditioning treatment and
+                           blow-dry ($64 value)</li>
+                           </ul>
+soldQuantity             : -1
+limitedQuantityRemaining :
+tippingPoint             : 0
+soldQuantityMessage      : -1
+placeholderUrl           : https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png
+grid4ImageUrl            : https://img.grouponcdn.com/deal/fF7NUUQJreSurhp5nKJk/uJ-2048x1228/v1/t300
+                           x182.jpg
+grid6ImageUrl            : https://img.grouponcdn.com/deal/fF7NUUQJreSurhp5nKJk/uJ-2048x1228/v1/t460
+                           x279.jpg
+largeImageUrl            : https://img.grouponcdn.com/deal/fF7NUUQJreSurhp5nKJk/uJ-2048x1228/v1/t440
+                           x300.jpg
+mediumImageUrl           : https://img.grouponcdn.com/deal/fF7NUUQJreSurhp5nKJk/uJ-2048x1228/v1/t100
+                           x100.jpg
+smallImageUrl            : https://img.grouponcdn.com/deal/fF7NUUQJreSurhp5nKJk/uJ-2048x1228/v1/t50x
+                           50.jpg
+sidebarImageUrl          : https://img.grouponcdn.com/deal/fF7NUUQJreSurhp5nKJk/uJ-2048x1228/v1/t200
+                           x300.jpg
+status                   : open
+type                     : groupon
+accessType               : extended
+endAt                    : 2038-12-03T04:59:59Z
+startAt                  : 2014-07-30T04:00:00Z
+tippedAt                 : 2014-07-29T04:00:00Z
+areas                    : {}
+channels                 : {}
+dealTypes                : {@{id=grooming; name=Blowouts & Styling; description=Blowouts & Styling}}
+division                 : @{id=grand-rapids; name=Grand Rapids; timezone=Eastern Daylight Time;
+                           timezoneOffsetInSeconds=-14400; timezoneIdentifier=America/New_York;
+                           lat=42.9634; lng=-85.6681}
+grouponRating            :
+allowedInCart            : False
+isInviteOnly             : False
+shippingAddressRequired  : False
+isOptionListComplete     : True
+isMerchandisingDeal      : False
+isNowDeal                : False
+isSoldOut                : False
+isTipped                 : True
+isTravelBookableDeal     : False
+isGliveInventoryDeal     : False
+isAutoRefundEnabled      : False
+isGiftable               : True
+placementPriority        : nearby
+redemptionLocation       : Forest Hills
+locationNote             :
+vip                      :
+fulfillmentMethod        :
+tags                     : {@{name=Salon - Hair Conditioning Treatment;
+                           uuid=b8c9526f-77ac-4845-a01e-3f807fa77304}, @{name=Hair Cuts & Styling;
+                           uuid=d03a8723-1260-443f-9b7d-c1c698be6c51}}
+displayOptions           : {@{name=discount; enabled=True}, @{name=quantity; enabled=True},
+                           @{name=timer; enabled=True}, @{name=merchandisingType; value=other}...}
+textAd                   : @{line1=; line2=; headline=}
+merchant                 : @{id=sj-design; uuid=7ed9fb0e-cf90-11e1-ab24-00259060b35c; name=SJ
+                           Design Hair Studio; websiteUrl=http://www.sjdesignhairstudio.com/;
+                           twitterUrl=; ratings=; facebookUrl=}
+options                  : {@{id=10768034; uuid=f388a922-6de9-f0df-56ca-e0b0d2156029; bookable=; buy
+                           Url=https://www.groupon.com/deals/sj-design-hair-studio-1/confirmation?pl
+                           edge_id=10768034; customField=; details=System.Object[]; discount=;
+                           discountPercent=47; endAt=2038-12-03T04:59:59Z;
+                           expiresAt=2020-01-10T00:00:00Z; expiresInDays=90; externalUrl=;
+                           isLimitedQuantity=True; isSoldOut=False; maximumPurchaseQuantity=2;
+                           minimumPurchaseQuantity=1; price=; traits=System.Object[];
+                           redemptionLocations=System.Object[]; soldQuantity=-1;
+                           soldQuantityMessage=-1; specificAttributes=; status=open; title=Haircut
+                           with Deep Conditioning Treatment and Blow Dry; value=;
+                           isGuestCheckoutEligible=True; inventoryService=;
+                           customFields=System.Object[]}}
+says                     :
+salesforceLink           :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].grouponrating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].textas
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].textad
+
+line1 line2 headline
+----- ----- --------
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].merchant
+
+
+id          : sj-design
+uuid        : 7ed9fb0e-cf90-11e1-ab24-00259060b35c
+name        : SJ Design Hair Studio
+websiteUrl  : http://www.sjdesignhairstudio.com/
+twitterUrl  :
+ratings     :
+facebookUrl :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].options
+
+
+id                      : 10768034
+uuid                    : f388a922-6de9-f0df-56ca-e0b0d2156029
+bookable                :
+buyUrl                  : https://www.groupon.com/deals/sj-design-hair-studio-1/confirmation?pledge_
+                          id=10768034
+customField             :
+details                 : {@{description=Appointment required. Limit 1 per person, may buy 1
+                          additional as gift(s). Limit 1 per visit. All goods or services must be
+                          used by the same person. Not valid for clients active within the past 6
+                          month(s). Merchant's standard cancellation policy applies (any fees not
+                          to exceed voucher price). }}
+discount                : @{amount=3050; currencyCode=USD; formattedAmount=$30.50;
+                          currencyExponent=2}
+discountPercent         : 47
+endAt                   : 2038-12-03T04:59:59Z
+expiresAt               : 2020-01-10T00:00:00Z
+expiresInDays           : 90
+externalUrl             :
+isLimitedQuantity       : True
+isSoldOut               : False
+maximumPurchaseQuantity : 2
+minimumPurchaseQuantity : 1
+price                   : @{amount=3350; currencyCode=USD; formattedAmount=$33.50;
+                          currencyExponent=2}
+traits                  : {}
+redemptionLocations     : {@{name=Forest Hills; streetAddress1=6800 Old 28th Street Southeast;
+                          streetAddress2=; state=MI; city=Grand Rapids; neighborhood=Forest Hills;
+                          postalCode=49546; country=US; phoneNumber=+16169492919; id=90302662;
+                          uuid=84c49fa4-039e-b06a-9298-013a8ff54445; ordering=0; menu=;
+                          openHours=System.Object[]; placeAttributes=System.Object[];
+                          lat=42.912962; lng=-85.5007012}}
+soldQuantity            : -1
+soldQuantityMessage     : -1
+specificAttributes      : @{takeoutDelivery=}
+status                  : open
+title                   : Haircut with Deep Conditioning Treatment and Blow Dry
+value                   : @{amount=6400; currencyCode=USD; formattedAmount=$64.00;
+                          currencyExponent=2}
+isGuestCheckoutEligible : True
+inventoryService        : @{id=voucher}
+customFields            : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].grouponrating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[48].options
+
+
+id                      : 10768034
+uuid                    : f388a922-6de9-f0df-56ca-e0b0d2156029
+bookable                :
+buyUrl                  : https://www.groupon.com/deals/sj-design-hair-studio-1/confirmation?pledge_
+                          id=10768034
+customField             :
+details                 : {@{description=Appointment required. Limit 1 per person, may buy 1
+                          additional as gift(s). Limit 1 per visit. All goods or services must be
+                          used by the same person. Not valid for clients active within the past 6
+                          month(s). Merchant's standard cancellation policy applies (any fees not
+                          to exceed voucher price). }}
+discount                : @{amount=3050; currencyCode=USD; formattedAmount=$30.50;
+                          currencyExponent=2}
+discountPercent         : 47
+endAt                   : 2038-12-03T04:59:59Z
+expiresAt               : 2020-01-10T00:00:00Z
+expiresInDays           : 90
+externalUrl             :
+isLimitedQuantity       : True
+isSoldOut               : False
+maximumPurchaseQuantity : 2
+minimumPurchaseQuantity : 1
+price                   : @{amount=3350; currencyCode=USD; formattedAmount=$33.50;
+                          currencyExponent=2}
+traits                  : {}
+redemptionLocations     : {@{name=Forest Hills; streetAddress1=6800 Old 28th Street Southeast;
+                          streetAddress2=; state=MI; city=Grand Rapids; neighborhood=Forest Hills;
+                          postalCode=49546; country=US; phoneNumber=+16169492919; id=90302662;
+                          uuid=84c49fa4-039e-b06a-9298-013a8ff54445; ordering=0; menu=;
+                          openHours=System.Object[]; placeAttributes=System.Object[];
+                          lat=42.912962; lng=-85.5007012}}
+soldQuantity            : -1
+soldQuantityMessage     : -1
+specificAttributes      : @{takeoutDelivery=}
+status                  : open
+title                   : Haircut with Deep Conditioning Treatment and Blow Dry
+value                   : @{amount=6400; currencyCode=USD; formattedAmount=$64.00;
+                          currencyExponent=2}
+isGuestCheckoutEligible : True
+inventoryService        : @{id=voucher}
+customFields            : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> get-help out-file
+
+NAME
+    Out-File
+
+SYNOPSIS
+    Sends output to a file.
+
+
+SYNTAX
+    Out-File [-FilePath] <String> [[-Encoding] {unknown | string | unicode | bigendianunicode |
+    utf8 | utf7 | utf32 | ascii | default | oem}] [-Append] [-Confirm] [-Force] [-InputObject
+    <PSObject>] [-NoClobber] [-NoNewline] [-WhatIf] [-Width <Int32>] [<CommonParameters>]
+
+    Out-File [[-Encoding] {unknown | string | unicode | bigendianunicode | utf8 | utf7 | utf32 |
+    ascii | default | oem}] [-Append] [-Confirm] [-Force] [-InputObject <PSObject>] -LiteralPath
+    <String> [-NoClobber] [-NoNewline] [-WhatIf] [-Width <Int32>] [<CommonParameters>]
+
+
+DESCRIPTION
+    The Out-File cmdlet sends output to a file. You can use this cmdlet instead of the redirection
+    operator (>) when you need to use its parameters.
+
+
+RELATED LINKS
+    Online Version: http://go.microsoft.com/fwlink/?LinkId=821839
+    Out-GridView
+    Out-Printer
+    Out-String
+    Tee-Object
+
+REMARKS
+    To see the examples, type: "get-help Out-File -examples".
+    For more information, type: "get-help Out-File -detailed".
+    For technical information, type: "get-help Out-File -full".
+    For online help, type: "get-help Out-File -online"
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> clear
+PS C:\users\luke\documents\powershell\scripts\groupontool> $in = 1, 2, 3
+PS C:\users\luke\documents\powershell\scripts\groupontool> $in
+1
+2
+3
+PS C:\users\luke\documents\powershell\scripts\groupontool> $out = -join $in
+PS C:\users\luke\documents\powershell\scripts\groupontool> $out
+123
+PS C:\users\luke\documents\powershell\scripts\groupontool> $out.GetType().FullName
+System.String
+PS C:\users\luke\documents\powershell\scripts\groupontool> $ca = [char[]] 'abcd'
+PS C:\users\luke\documents\powershell\scripts\groupontool> [array]::Reverse($ca)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $ca
+d
+c
+b
+a
+PS C:\users\luke\documents\powershell\scripts\groupontool> $ra = -join $ca
+PS C:\users\luke\documents\powershell\scripts\groupontool> $ra
+dcba
+PS C:\users\luke\documents\powershell\scripts\groupontool> -join 1,2,3
+1
+2
+3
+PS C:\users\luke\documents\powershell\scripts\groupontool> -join (1,2,3)
+123
+PS C:\users\luke\documents\powershell\scripts\groupontool> [System.AppDomain]::CurrentDomain
+
+
+FriendlyName           : DefaultDomain
+Id                     : 1
+ApplicationDescription :
+BaseDirectory          : C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+DynamicDirectory       :
+RelativeSearchPath     :
+SetupInformation       : System.AppDomainSetup
+ShadowCopyFiles        : False
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $oh = [ordered] @{ }
+PS C:\users\luke\documents\powershell\scripts\groupontool> $oh[5] = 'five'
+Specified argument was out of the range of valid values.
+Parameter name: index
+At line:1 char:1
++ $oh[5] = 'five'
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentOutOfRangeException
+    + FullyQualifiedErrorId : System.ArgumentOutOfRangeException
+Specified argument was out of the range of valid values.
+Parameter name: index
+At line:1 char:1
++ $oh[5] = 'five'
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentOutOfRangeException
+    + FullyQualifiedErrorId : System.ArgumentOutOfRangeException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $oh[[object] 5] = 'five'
+PS C:\users\luke\documents\powershell\scripts\groupontool> $oh
+
+Name                           Value
+----                           -----
+5                              five
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $oh[[object] 5]
+five
+PS C:\users\luke\documents\powershell\scripts\groupontool> 'abc' * 0
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> 'abc' * 3
+abcabcabc
+PS C:\users\luke\documents\powershell\scripts\groupontool> ('abc' * 0).GetType().FullName
+System.String
+PS C:\users\luke\documents\powershell\scripts\groupontool> ('abc' * 0).Length
+0
+PS C:\users\luke\documents\powershell\scripts\groupontool> $a=1,2,3
+PS C:\users\luke\documents\powershell\scripts\groupontool> $a.Length
+3
+PS C:\users\luke\documents\powershell\scripts\groupontool> $ = $a * 2
+$ : The term '$' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ $ = $a * 2
++ ~
+    + CategoryInfo          : ObjectNotFound: ($:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+$ : The term '$' is not recognized as the name of a cmdlet, function, script file, or operable
+program. Check the spelling of the name, or if a path was included, verify that the path is
+correct and try again.
+At line:1 char:1
++ $ = $a * 2
++ ~
+    + CategoryInfo          : ObjectNotFound: ($:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $a = $a * 2
+PS C:\users\luke\documents\powershell\scripts\groupontool> $a.Length
+6
+PS C:\users\luke\documents\powershell\scripts\groupontool> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts\groupontool
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/11/2019   4:35 AM              7 .gitignore
+-a----       10/11/2019   4:59 AM           4368 all_cities.txt
+-a----       10/12/2019  10:49 AM            325 editing_the_55_groupon_fields.txt
+-a----       10/12/2019   1:12 PM          48543 exploring_api_transcript.txt
+-a----       10/12/2019   1:48 PM            541 file.csv
+-a----       10/11/2019   4:57 AM          54269 groupon.png
+-a----       10/12/2019   6:54 AM            803 groupon.ps1
+-a----       10/11/2019   4:57 AM            795 groupon.uml
+-a----       10/11/2019   4:34 AM             34 mytoken.txt
+-a----       10/11/2019   4:33 AM             84 my_credentials.txt
+-a----       10/11/2019   4:11 AM             95 readme.md
+-a----       10/12/2019   1:47 PM            489 sample_deal.csv
+-a----       10/13/2019   2:51 AM         126418 sample_pulling_deals_transcript.txt
+-a----       10/12/2019  12:11 PM            424 style.css
+-a----       10/12/2019   8:58 AM            749 the_55_groupon_fields.txt
+-a----       10/12/2019  12:18 PM           7821 what_fields_do.html
+-a----       10/12/2019   9:31 AM            428 what_fields_do.txt
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> new-item -name test.txt -itemtype file
+
+
+    Directory: C:\users\luke\documents\powershell\scripts\groupontool
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/13/2019   8:56 AM              0 test.txt
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> vim test.txt
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $data = Get-Content -Path data.txt | foreach { 
+$e=@{}
+$e.level, [int] $e.lower, [int] $e.upper = -split $_
+$e
+}
+Get-Content : Cannot find path 'C:\users\luke\documents\powershell\scripts\groupontool\data.txt' because it does not 
+exist.
+At line:1 char:9
++ $data = Get-Content -Path data.txt | foreach {
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\users\luke\d...ontool\data.txt:String) [Get-Content], 
+ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+Get-Content : Cannot find path 'C:\users\luke\documents\powershell\scripts\groupontool\data.txt'
+because it does not exist.
+At line:1 char:9
++ $data = Get-Content -Path data.txt | foreach {
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\users\luke\d...ontool\data.txt:String) [Get-Co
+   ntent], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $data = Get-Content -Path test.txt | foreach { 
+$e=@{}
+$e.level, [int] $e.lower, [int] $e.upper = -split $_
+$e
+}
+PS C:\users\luke\documents\powershell\scripts\groupontool> $data.length
+4
+PS C:\users\luke\documents\powershell\scripts\groupontool> $data[0]
+
+Name                           Value
+----                           -----
+upper                          25
+level                          quiet
+lower                          0
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> [int]'123' -lt 123.4
+True
+PS C:\users\luke\documents\powershell\scripts\groupontool> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts\groupontool
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/11/2019   4:35 AM              7 .gitignore
+-a----       10/11/2019   4:59 AM           4368 all_cities.txt
+-a----       10/12/2019  10:49 AM            325 editing_the_55_groupon_fields.txt
+-a----       10/12/2019   1:12 PM          48543 exploring_api_transcript.txt
+-a----       10/12/2019   1:48 PM            541 file.csv
+-a----       10/11/2019   4:57 AM          54269 groupon.png
+-a----       10/12/2019   6:54 AM            803 groupon.ps1
+-a----       10/11/2019   4:57 AM            795 groupon.uml
+-a----       10/11/2019   4:34 AM             34 mytoken.txt
+-a----       10/11/2019   4:33 AM             84 my_credentials.txt
+-a----       10/11/2019   4:11 AM             95 readme.md
+-a----       10/12/2019   1:47 PM            489 sample_deal.csv
+-a----       10/13/2019   2:51 AM         126418 sample_pulling_deals_transcript.txt
+-a----       10/12/2019  12:11 PM            424 style.css
+-a----       10/13/2019   8:56 AM             52 test.txt
+-a----       10/12/2019   8:58 AM            749 the_55_groupon_fields.txt
+-a----       10/12/2019  12:18 PM           7821 what_fields_do.html
+-a----       10/12/2019   9:31 AM            428 what_fields_do.txt
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> cd ..
+PS C:\users\luke\documents\powershell\scripts> dir
+
+
+    Directory: C:\users\luke\documents\powershell\scripts
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/13/2019   8:56 AM                GrouPonTool
+d-----         8/2/2019  12:48 PM                InstalledScriptInfos
+
+
+PS C:\users\luke\documents\powershell\scripts> cd ..
+PS C:\users\luke\documents\powershell> dir
+
+
+    Directory: C:\users\luke\documents\powershell
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        7/21/2019   4:37 PM                Help
+d-----       10/11/2019   3:40 AM                Scripts
+
+
+PS C:\users\luke\documents\powershell> cd ..
+PS C:\users\luke\documents> dir
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+-a----       10/10/2019   3:57 PM           4368 all_cities.txt
+-a----       10/12/2019   7:04 AM            339 autohotkey
+-a----       10/12/2019   8:50 AM         383380 PowerShell_transcript.LUKEPC.U3HIo2Gl.2019101208
+                                                 3832.txt
+-a----        8/10/2019   2:40 AM          11355 test.docx
+-a----       10/12/2019   3:22 PM      194990835 zipped_usb.zip
+
+
+PS C:\users\luke\documents> cd autohotkey
+cd : Cannot find path 'autohotkey' because it does not exist.
+At line:1 char:1
++ cd autohotkey
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (autohotkey:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+cd : Cannot find path 'autohotkey' because it does not exist.
+At line:1 char:1
++ cd autohotkey
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (autohotkey:String) [Set-Location], ItemNotFoundEx
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\users\luke\documents> cd autohotkey
+cd : Cannot find path 'autohotkey' because it does not exist.
+At line:1 char:1
++ cd autohotkey
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (autohotkey:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+cd : Cannot find path 'autohotkey' because it does not exist.
+At line:1 char:1
++ cd autohotkey
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (autohotkey:String) [Set-Location], ItemNotFoundEx
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\users\luke\documents> dir
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+-a----       10/10/2019   3:57 PM           4368 all_cities.txt
+-a----       10/12/2019   7:04 AM            339 autohotkey
+-a----       10/12/2019   8:50 AM         383380 PowerShell_transcript.LUKEPC.U3HIo2Gl.2019101208
+                                                 3832.txt
+-a----        8/10/2019   2:40 AM          11355 test.docx
+-a----       10/12/2019   3:22 PM      194990835 zipped_usb.zip
+
+
+PS C:\users\luke\documents> rm autohotkey
+PS C:\users\luke\documents> dir
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+-a----       10/10/2019   3:57 PM           4368 all_cities.txt
+-a----       10/12/2019   8:50 AM         383380 PowerShell_transcript.LUKEPC.U3HIo2Gl.2019101208
+                                                 3832.txt
+-a----        8/10/2019   2:40 AM          11355 test.docx
+-a----       10/12/2019   3:22 PM      194990835 zipped_usb.zip
+
+
+PS C:\users\luke\documents> dir -directory
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+
+
+PS C:\users\luke\documents> dir -directory | fortmat-table
+fortmat-table : The term 'fortmat-table' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:18
++ dir -directory | fortmat-table
++                  ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (fortmat-table:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fortmat-table : The term 'fortmat-table' is not recognized as the name of a cmdlet, function,
+script file, or operable program. Check the spelling of the name, or if a path was included,
+verify that the path is correct and try again.
+At line:1 char:18
++ dir -directory | fortmat-table
++                  ~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (fortmat-table:String) [], CommandNotFoundExceptio
+   n
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents> dir -directory | format-table
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/13/2019   4:48 AM                Anki Images
+d-----       12/13/2018   1:45 PM                Audible
+d-----        10/2/2019   3:53 AM                Audio Library
+d-----        7/10/2018   5:44 PM                Balabolka
+d-----        3/30/2019   3:01 AM                Book Notes
+d-----        7/10/2018   5:44 PM                Brains
+d-----        7/15/2019   3:23 PM                Calibre Library
+d-----        2/18/2018   6:26 PM                Cropper Captures
+d-----        7/15/2019   6:13 PM                Current Correspondance
+d-----        6/25/2015  11:49 AM                Custom Office Templates
+d-----        3/18/2019   4:36 PM                ePub Books
+d-----        7/10/2018   6:17 PM                Everyday
+d-----        7/21/2018   3:03 PM                freecol
+d-----        9/12/2017  12:09 AM                GitHub
+d-----         4/6/2016  12:10 PM                Graphics
+d-----        7/27/2019   2:26 PM                hyundai
+d-----        7/10/2018   5:45 PM                IISExpress
+d-----        9/11/2018  11:27 PM                image viewer
+d-----        7/10/2018   5:45 PM                Info Products
+d-----        7/10/2018   5:45 PM                Inform
+d-----         4/9/2019   2:27 PM                Javascript Projects
+d-----        7/10/2018   5:45 PM                Judge Dredd
+d-----        8/24/2017   9:08 PM                Keysticks
+d-----        7/15/2019   6:13 PM                Lionbridge Time Logs
+d-----         7/2/2019   4:36 AM                Matrix_add_to_Anki
+d-----       11/15/2018   3:43 PM                Memory Palace
+d-----         2/2/2019   2:58 AM                Mesen
+d-----        1/22/2019   1:35 PM                My Digital Editions
+d-----        4/16/2019   1:02 PM                My Games
+d-----       10/12/2019   4:10 AM                My Kindle Content
+d-----        7/10/2018   5:46 PM                My Saved Games
+d-----        9/23/2016   8:16 PM                My Web Sites
+d-----        7/21/2019   4:43 PM                myPowerShellScripts
+d-----        3/21/2019   8:33 PM                NMM CLI
+d-----        7/10/2018   5:46 PM                OneNote Notebooks
+d-----         7/2/2019  11:45 PM                Organize
+d-----        9/24/2018  11:08 AM                Pamela
+d-----        10/6/2019   6:06 AM                pdfs-to-import
+d-----         8/2/2019  12:48 PM                PowerShell
+d-----        6/18/2016   3:25 PM                Python Scripts
+d-----        4/11/2017  11:24 AM                Screencast-O-Matic
+d-----       10/10/2019   6:27 PM                Skype Calls
+d-----       10/11/2019  12:09 PM                sort-me
+d-----        7/10/2018   8:32 PM                Supermemo
+d-----        7/19/2019   2:17 PM                Text File Ideas
+d-----        7/27/2019   2:26 PM                TimeSheet
+d-----        7/10/2018   9:20 PM                Visual Studio 2015
+d-----         1/4/2019   4:26 PM                Visual Studio 2017
+d-----        9/22/2018   9:06 AM                VPProjects
+d-----        8/23/2019  10:48 PM                WindowsPowerShell
+d-----        6/12/2019   4:08 PM                World Domination
+d-----        7/10/2018   9:20 PM                Xenonauts
+d-----        2/22/2019   1:30 AM                Yoga Routine
+d-----        8/16/2016  10:10 AM                Zoom
+
+
+PS C:\users\luke\documents> new-item -name auto-hot-key -directory
+>> TerminatingError(New-Item): "A parameter cannot be found that matches parameter name 'directory'."
+New-Item : A parameter cannot be found that matches parameter name 'directory'.
+At line:1 char:29
++ new-item -name auto-hot-key -directory
++                             ~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [New-Item], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.NewItemCommand
+New-Item : A parameter cannot be found that matches parameter name 'directory'.
+At line:1 char:29
++ new-item -name auto-hot-key -directory
++                             ~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [New-Item], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.NewItemComman
+   d
+
+PS C:\users\luke\documents> new-item -name auto-hot-key -itemtype directory
+
+
+    Directory: C:\users\luke\documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/13/2019   9:09 AM                auto-hot-key
+
+
+PS C:\users\luke\documents> cd auto-hot-key
+PS C:\users\luke\documents\auto-hot-key> new-item -name move.ahk -itemtype file
+
+
+    Directory: C:\users\luke\documents\auto-hot-key
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/13/2019   9:09 AM              0 move.ahk
+
+
+PS C:\users\luke\documents\auto-hot-key> rename-item move.ahk mouse_tools.ahk
+PS C:\users\luke\documents\auto-hot-key> dir
+
+
+    Directory: C:\users\luke\documents\auto-hot-key
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/13/2019   9:09 AM              0 mouse_tools.ahk
+
+
+PS C:\users\luke\documents\auto-hot-key> vim mouse_tools.ahk
+
+PS C:\users\luke\documents\auto-hot-key> dir
+
+
+    Directory: C:\users\luke\documents\auto-hot-key
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/13/2019   9:10 AM             12 mouse_tools.ahk
+
+
+PS C:\users\luke\documents\auto-hot-key> ii mouse_tools.ahk
+PS C:\users\luke\documents\auto-hot-key> vim mouse_tools.ahk
+
+PS C:\users\luke\documents\auto-hot-key> ii .\mouse_tools.ahk
+PS C:\users\luke\documents\auto-hot-key> vim .\mouse_tools.ahk
+
+PS C:\users\luke\documents\auto-hot-key> ii .\mouse_tools.ahk
+PS C:\users\luke\documents\auto-hot-key> vim .\mouse_tools.ahk
+
+PS C:\users\luke\documents\auto-hot-key> Clear-RecycleBin
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Clear-RecycleBin" on target "All of the contents of the Recycle Bin".
+&Yes  Yes to &All  &No  No to A&ll  &Suspend
+A
+PS C:\users\luke\documents\auto-hot-key> H:
+PS H:\> .\backup.ps1
+Syncing USB flashdrive with C:\Users\Luke\main_sm
+
+ Log File : H:\sm_backup.txt
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Sunday, October 13, 2019 9:20:28 AM
+   Source = H:\
+     Dest : C:\Users\Luke\main_sm\
+
+    Files : *.*
+
+  Options : *.* /TEE /DCOPY:DA /COPY:DAT /ETA /IS /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+                          49    H:\
+          *EXTRA File              12288        .21_day_interval_exp.txt.swp
+          *EXTRA File              32768        .import_educaction.txt.swp
+          *EXTRA File              12288        .import_me.txt.swn
+          *EXTRA File              12288        .jason_bell.txt.swp
+          *EXTRA File              16384        .jason_bell_notes.txt.swp
+          *EXTRA File              12288        .notes_for_ed_9_12.txt.swp
+          *EXTRA File              12288        .pauly_notes_for_9_12.txt.swp
+          *EXTRA File              12288        .ps_chap3_notes.txt.swp
+          *EXTRA File              16384        .TAGS.txt.swp
+          *EXTRA File                338        21_day_interval_exp.txt
+          *EXTRA File              39722        auto_var.txt
+          *EXTRA File                281        checklist.txt
+          *EXTRA File                 21        Database.kdb.lock
+          *EXTRA File               1158        dmarc.txt
+          *EXTRA File                 56        domains.txt
+          *EXTRA File                491        ed.txt
+          *EXTRA File                  0        ed_domains.txt
+          *EXTRA File                289        email_ed_8_19_2019.txt
+          *EXTRA File               1955        email_to_ed_notes.txt
+          *EXTRA File              21762        for_sm.txt
+          *EXTRA File             13.9 m        FreeFileSync_10.15_Windows_Setup.exe
+          *EXTRA File              17600        import_educaction.txt
+          *EXTRA File                331        import_text.txt
+          *EXTRA File              10969        jason_bell_notes.txt
+          *EXTRA File                  0        notes_for_ed_9_12.txt
+          *EXTRA File               4294        paths.txt
+          *EXTRA File                499        pauly_notes_for_9_12.txt
+          *EXTRA File                  3        ps_transcript.txt
+          *EXTRA File                476        questions_for_charles.txt
+          *EXTRA File                454        quotes_to_import.txt
+          *EXTRA File               1584        sm_comment.txt
+          *EXTRA File               1855        transcript.txt
+          *EXTRA File               6758        tucker_import.txt
+          *EXTRA File               3344        william_8_29.txt
+          *EXTRA File               1949        youtube_transcripts.txt
+          *EXTRA File               1762        youtube_transcripts_2.txt
+          *EXTRA File              17600        youtube_transcripts_3.txt
+          *EXTRA File               2682        youtube_transcripts_4.txt
+100%        Same                     264        -item -name test.csv -itemtype file
+100%        Same                   12288        .ed_domains.txt.swp     09:20 -> 09:20
+100%        Same                   12288        .impore_me.txt.swp      09:20 -> 09:20
+100%        Same                   12288        .import_me.txt.swo      09:20 -> 09:20
+100%        Same                   12288        .import_me.txt.swp      09:20 -> 09:20
+100%        Same                   12288        .sm_comment.txt.swp     09:20 -> 09:20
+100%        Same                    3944        8_22.gef        09:20 -> 09:20
+100%        Same                       2        audit.ps1       09:20 -> 09:20
+100%        Same                     862        backup.ps1      09:20 -> 09:20
+100%        Same                    1448        BOOTEX.LOG      09:20 -> 09:20
+100%        Same                      67        close_term.ahk  09:20 -> 09:20
+100%        Same                   77436        Database.kdb    09:20 -> 09:20
+100%        Newer                  37374        Database.kdbx   09:20 -> 09:20
+100%        Same                   5.1 m        future_flashback.mp3    09:20 -> 09:20
+100%        Same                     310        import_me.txt   09:20 -> 09:20
+100%        Newer                    950        lukes_knowledge.Kno     09:20 -> 09:20
+100%        Same                       0        power_shell_notes.txt   09:20 -> 09:20
+100%        Same                     187        ps_chap3_notes.txt      09:20 -> 09:20
+100%        Same                     422        redirect.ps1    09:20 -> 09:20
+100%        Newer                      2        sm_backup.txt   09:20 -> 09:20
+100%        Same                   41733        TAGS.txt        09:20 -> 09:20
+100%        Same                     769        temp.html       09:20 -> 09:20
+100%        Same                       2        temp.ps1        09:20 -> 09:20
+100%        Same                     264        test.csv        09:20 -> 09:20
+100%        New File               12288        _.svr           09:20 -> 09:20
+100%        Same                   12288        _.svs           09:20 -> 09:20
+100%        Same                   12288        _.svt           09:20 -> 09:20
+100%        Same                   12288        _.svu           09:20 -> 09:20
+100%        Same                   12288        _.svv           09:20 -> 09:20
+100%        Same                   12288        _.svw           09:20 -> 09:20
+100%        Same                   12288        _.svx           09:20 -> 09:20
+100%        Same                   12288        _.svy           09:20 -> 09:20
+100%        Same                   12288        _.svz           09:20 -> 09:20
+100%        Same                   12288        _.swa           09:20 -> 09:20
+100%        Same                   12288        _.swb           09:20 -> 09:20
+100%        Same                   12288        _.swc           09:20 -> 09:20
+100%        Same                   12288        _.swd           09:20 -> 09:20
+100%        Same                   12288        _.swe           09:20 -> 09:20
+100%        Same                   12288        _.swf           09:20 -> 09:20
+100%        Same                   12288        _.swg           09:20 -> 09:20
+100%        Same                   12288        _.swh           09:20 -> 09:20
+100%        Same                   12288        _.swi           09:20 -> 09:20
+100%        Same                   12288        _.swj           09:20 -> 09:20
+100%        Same                   12288        _.swk           09:20 -> 09:20
+100%        Same                   12288        _.swl           09:20 -> 09:20
+100%        Same                   12288        _.swm           09:20 -> 09:20
+100%        Same                   12288        _.swn           09:20 -> 09:20
+100%        Same                   12288        _.swo           09:20 -> 09:20
+100%        Same                   12288        _.swp           09:20 -> 09:20
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         0
+   Files :        49        49         0         0         0        38
+   Bytes :    5.68 m    5.68 m         0         0         0   14.16 m
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+   Speed :             9089708 Bytes/sec.
+   Speed :             520.117 MegaBytes/min.
+   Ended : Sunday, October 13, 2019 9:20:29 AM
+Making a zip file of the USB drive.
+Removing: C:\users\luke\onedrive\zipped_usb.zip
+Copying zipped_usb.zip to C:\users\luke\onedrive\
+Removing: c:\users\luke\iCloudDrive\zipped_usb.zip
+Copying zipped_usb.zip to c:\users\luke\iCloudDrive\
+Removing: c:\users\luke\GoogleDrive\zipped_usb.zip
+Copying zipped_usb.zip to c:\users\luke\GoogleDrive\
+Syncing all SuperMemo full backups.
+
+ Log File : H:\sm_backup.txt
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Sunday, October 13, 2019 9:36:58 AM
+   Source : C:\users\luke\My Documents\
+     Dest : E:\
+
+    Files : *.*
+
+  Options : *.* /TEE /DCOPY:DA /COPY:DAT /ETA /IS /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+                           6    C:\users\luke\My Documents\
+        *EXTRA Dir        -1    E:\$RECYCLE.BIN\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-02 01-32-13)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-06 04-41-07)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-07 07-07-39)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-16 04-02-26)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-16 11-07-05)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-20 19-27-44)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-24 02-08-59)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-24 02-24-45)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-08-26 17-45-28)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-09-17 09-04-04)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2018-09-22 02-47-22)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-09-24 19-20-58)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-09-26 19-52-10)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-03 12-43-04)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-14 06-53-35)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-18 08-21-21)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-22 14-53-08)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-26 10-06-49)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-10-28 19-15-59)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2018-11-04 17-16-21)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-10 06-00-38)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-17 12-14-23)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-26 10-44-08)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-11-29 22-53-56)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-03 19-41-54)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-09 06-47-35)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-12 06-24-28)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-16 07-31-41)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-22 05-09-38)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2018-12-30 01-49-40)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-0\
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-01 19-18-51)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-05 04-34-03)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-08 02-13-25)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-13 01-40-13)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-16 07-54-03)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-19 17-03-40)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-20 17-00-57)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-22 16-37-59)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-23 12-14-59)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-01-28 03-40-25)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-01 21-13-48)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-02 18-49-17)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-04 01-42-33)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-05 01-06-12)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-06 01-41-04)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-07 00-45-24)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-08 03-46-57)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-10 04-58-54)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-11 06-57-27)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-12 05-55-11)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-14 09-06-43)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-15 00-29-36)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-17 18-59-28)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-22 02-08-15)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-02-28 11-48-00)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-02 06-32-09)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-04 00-39-57)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-15 01-56-00)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-03-20 22-24-10)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-01 02-31-33)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-01 13-07-55)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-02 15-02-46)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-04 03-03-21)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-14 07-18-38)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-20 00-21-19)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-25 14-35-56)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-04-27 02-07-21)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-04 16-41-35)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-06 11-55-49)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-07 15-39-50)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-09 01-25-54)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-09 14-43-13)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-11 23-06-10)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-12 18-26-09)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-13 20-13-52)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2019-05-20 03-01-40)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-22 05-26-47)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-26 00-10-24)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-05-30 14-32-10)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-03 11-01-42)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-04 15-01-45)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-07 23-33-43)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-08 09-03-54)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-09 22-01-06)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-10 21-57-08)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2019-06-21 23-38-00)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-25 01-46-01)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-26 00-20-34)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-28 16-27-34)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-06-30 22-58-26)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-01 03-37-38)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-02 05-10-35)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-03 04-04-15)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-04 04-08-00)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-08 01-01-52)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-09 09-56-17)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-09 23-33-01)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-10 01-55-21)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-11 02-12-00)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-12 03-10-03)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-12 11-03-56)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-13 10-41-56)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-14 06-16-16)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-15 16-26-09)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-17 09-15-25)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-18 14-19-05)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-19 12-39-32)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-20 14-13-17)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-21 14-11-37)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-22 19-40-59)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-23 14-59-21)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-24 22-57-08)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-25 21-53-11)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-26 04-16-45)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-27 10-54-23)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-29 22-56-29)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-07-30 13-38-32)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-01 02-48-51)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-05 11-23-20)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-06 12-33-22)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-09 00-19-18)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-09 16-24-50)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of LUKES_KNOWLEDGE created on 2019-08-10 03-06-22)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-11 00-10-27)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-15 01-05-45)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-18 14-12-26)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-19 03-57-03)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-20 01-50-09)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-20 14-25-54)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-21 21-02-47)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-25 20-08-34)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-27 07-53-10)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-08-31 12-51-22)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-09-02 06-57-49)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-09-05 14-46-00)))\
+
+        *EXTRA Dir        -1    E:\(((Backup of lukes_knowledge created on 2019-09-06 14-07-28)))\
+
+        *EXTRA Dir        -1    E:\BackUp of FlashDrive\
+        *EXTRA Dir        -1    E:\backup_lukes_knowledge1_8_2016\
+        *EXTRA Dir        -1    E:\System Volume Information\
+        *EXTRA Dir        -1    E:\Tempo\
+        *EXTRA Dir        -1    E:\Writing Backup\
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2018-08-02
+ 01-32-13))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2018-12-03
+ 19-41-54))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-0.Kno
+
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-02-01
+ 21-13-48))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-05-04
+ 16-41-35))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-03
+ 11-01-42))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-04
+ 15-01-45))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-07
+ 23-33-43))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-08
+ 09-03-54))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-09
+ 22-01-06))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-10
+ 21-57-08))).Kno
+          *EXTRA File                950        (((Backup of LUKES_KNOWLEDGE created on 2019-06-21
+ 23-38-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-25
+ 01-46-01))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-26
+ 00-20-34))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-28
+ 16-27-34))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-06-30
+ 22-58-26))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-01
+ 03-37-38))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-02
+ 05-10-35))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-03
+ 04-04-15))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-04
+ 04-08-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-08
+ 01-01-52))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-09
+ 09-56-17))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-09
+ 23-33-01))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-10
+ 01-55-21))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-11
+ 02-12-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-12
+ 03-10-03))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-12
+ 11-03-56))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-13
+ 10-41-56))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-14
+ 06-16-16))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-15
+ 16-26-09))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-17
+ 09-15-25))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-18
+ 14-19-05))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-19
+ 12-39-32))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-20
+ 14-13-17))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-21
+ 14-11-37))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-22
+ 19-40-59))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-23
+ 14-59-21))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-24
+ 22-57-08))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-25
+ 21-53-11))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-26
+ 04-16-45))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-27
+ 10-54-23))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-29
+ 22-56-29))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-07-30
+ 13-38-32))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-01
+ 02-48-51))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-05
+ 11-23-20))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-06
+ 12-33-22))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-09
+ 00-19-18))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-09
+ 16-24-50))).Kno
+          *EXTRA File                950        (((Backup of LUKES_KNOWLEDGE created on 2019-08-10
+ 03-06-22))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-11
+ 00-10-27))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-15
+ 01-05-45))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-18
+ 14-12-26))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-19
+ 03-57-03))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-20
+ 01-50-09))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-20
+ 14-25-54))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-21
+ 21-02-47))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-25
+ 20-08-34))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-27
+ 07-53-10))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-08-31
+ 12-51-22))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-02
+ 06-57-49))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-05
+ 14-46-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-06
+ 14-07-28))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-11
+ 10-53-41))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-13
+ 04-29-56))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-14
+ 18-29-15))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-15
+ 02-52-00))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-25
+ 08-26-17))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-27
+ 20-47-47))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-28
+ 23-16-33))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-09-30
+ 16-19-38))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-02
+ 21-27-04))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-04
+ 13-07-33))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-05
+ 22-08-16))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-10
+ 06-32-12))).Kno
+          *EXTRA File                950        (((Backup of lukes_knowledge created on 2019-10-11
+ 14-48-27))).Kno
+          *EXTRA File                339        autohotkey
+          *EXTRA File              12935        PowerShell_transcript.LUKEPC._KATfoNm.201908220210
+47.txt
+100%        Same                    4368        all_cities.txt
+100%        Same                     402        desktop.ini     09:37 -> 09:37
+            Same                  383380        PowerShell_transcript.LUKEPC.U3HIo2Gl.201910120838
+100%    09:37 -> 09:37
+100%        Same                   11355        test.docx       09:37 -> 09:37
+100%        Newer                186.0 m        zipped_usb.zip  09:37 -> 09:40
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0       143
+   Files :         6         5         1         0         0        77
+   Bytes :  186.43 m  186.43 m        16         0         0    82.5 k
+   Times :   0:00:03   0:00:02                       0:00:00   0:00:01
+
+
+   Speed :            83721104 Bytes/sec.
+   Speed :            4790.560 MegaBytes/min.
+   Ended : Sunday, October 13, 2019 9:37:02 AM

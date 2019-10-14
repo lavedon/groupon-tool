@@ -1,0 +1,4 @@
+quiet 0 25
+normal 26 50
+loud 51 75
+noisy 76 100

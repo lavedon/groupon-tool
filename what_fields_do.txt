@@ -1,0 +1,9 @@
+d = nothing
+uuid = merchant id such as "93ed5360-8f0a-4ca0-8126-a878535e02d9"
+dealUrl = URL for deal - lot's of other junk thrown in
+title = Title of most recent deal
+announcementTitle = different from title
+shortAnnouncementTitle = states what the deal IS - NO % OFF info
+finePrint = Short paragraph.  Says how many per person.  Useful for prospect sorting.
+highlightsHtml = Not very helpful - a weird, short snippet
+

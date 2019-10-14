@@ -1,0 +1,47 @@
+@startuml
+start
+partition Selection {
+:ALL Beauty and Spa Categories;
+note left #Crimson: ANY city
+:Import List of Cities;
+note right #HotPink: GrouPon only allows you to earch by division
+:Import 250 deals;
+note right #Aqua
+  Ignore Offers (i.e. shampoo closeouts), 
+  Getaways (i.e. resorts)
+end note
+:BOTH active and expired deals;
+note left #f2f2f2: Or should it be <u><i>active</i> <b>ONLY</b></u>?
+:Over 300 Purchases;
+note right #HotPink: Chris Winters' criteria
+
+}
+partition Scraping {
+:Deal URL;
+:Business Name;
+:Phone Number;
+:Address;
+:Tags;
+
+
+}
+
+partition Review {
+
+:Select Lowest Price in Area;
+:Rate 1 -5;
+}
+
+
+partition Export {
+:Export CSV file;
+note left #Aqua
+  Google Docs API?
+  Nimble?
+  QuickMail.io?
+end note
+
+}
+
+stop
+@enduml

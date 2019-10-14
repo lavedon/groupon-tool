@@ -1,0 +1,614 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20191013162409
+Username: LUKEPC\Luke
+RunAs User: LUKEPC\Luke
+Configuration Name: 
+Machine: LUKEPC (Microsoft Windows NT 10.0.17134.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile
+Process ID: 8628
+PSVersion: 5.1.17134.858
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17134.858
+BuildVersion: 10.0.17134.858
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is trying-to-pull-entire-city-output-html.txt
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $Token = Get-Content .\mytoken.txt;
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $URL = "https://partner-api.groupon.com/deals.json?";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $URL
+https://partner-api.groupon.com/deals.json?
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $ids = Invoke-RestMethod -Uri "https://partner-api.groupon.com/division.json";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $ids
+
+divisions
+---------
+{@{id=abbotsford; name=Abbotsford; country=Canada; lat=49...
+
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $all_ids = @($ids.divisions.id);
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $all_ids[57]
+grand-rapids
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector = "division_id=$all_ids[1]&offset=0&limit=250";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector = "division_id=$all_ids[57]&offset=0&limit=250";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector
+division_id=abbotsford abilene akron-canton albany-capital-region albuquerque allentown-reading amarillo anchorage ann-arbor asheville athens-ga atlanta augusta austin bakersfield baltimore barrie baton-rouge billings birmingham boise boston buffalo calgary cedar-rapids-iowa-city central-jersey charleston charlotte chattanooga chicago cincinnati cleveland colorado-springs columbia columbia-mo columbus columbus-ga corpus-christi dallas dayton daytona-beach denver des-moines detroit edmonton el-paso erie eugene evansville fairfield-county fort-lauderdale fort-myers-cape-coral fort-wayne fort-worth appleton fresno gainesville grand-rapids green-bay greenville halifax hampton-roads harrisburg hartford honolulu houston huntsville indianapolis inland-empire jackson jacksonville kalamazoo kansas-city kelowna kingston kitchener-waterloo knoxville lakeland lansing las-vegas lexington lincoln little-rock london long-island los-angeles louisville lubbock macon madison memphis miami midland-odessa milwaukee minneapolis-stpaul mobile-baldwin-county modesto montgomery napa-sonoma naples nashville new-orleans new-york north-jersey ocala ogden oklahoma-city omaha orange-county orlando ottawa palm-beach pensacola philadelphia phoenix piedmont-triad pittsburgh portland portland-me providence raleigh-durham regina reno richmond rio-grande-valley roanoke rochester rockford sacramento salem-or salt-lake-city san-angelo san-antonio san-diego san-francisco san-jose santa-barbara santa-cruz saskatoon savannah-hilton-head seattle shreveport-bossier sioux-falls south-bend spokane-coeur-dalene springfield-mo springfield-ma stcatharines-niagara st-johns stlouis stockton sudbury syracuse tallahassee tampa-bay-area toledo topeka-lawrence greater-toronto-area tucson tulsa vancouver ventura-county victoria washington-dc westchester-county wichita wilmington-newark windsor winnipeg worcester youngstown[57]&offset=0&limit=250
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector = ""
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector = "division_id=$all_ids[57]&offset=0&limit=250";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector
+division_id=abbotsford abilene akron-canton albany-capital-region albuquerque allentown-reading amarillo anchorage ann-arbor asheville athens-ga atlanta augusta austin bakersfield baltimore barrie baton-rouge billings birmingham boise boston buffalo calgary cedar-rapids-iowa-city central-jersey charleston charlotte chattanooga chicago cincinnati cleveland colorado-springs columbia columbia-mo columbus columbus-ga corpus-christi dallas dayton daytona-beach denver des-moines detroit edmonton el-paso erie eugene evansville fairfield-county fort-lauderdale fort-myers-cape-coral fort-wayne fort-worth appleton fresno gainesville grand-rapids green-bay greenville halifax hampton-roads harrisburg hartford honolulu houston huntsville indianapolis inland-empire jackson jacksonville kalamazoo kansas-city kelowna kingston kitchener-waterloo knoxville lakeland lansing las-vegas lexington lincoln little-rock london long-island los-angeles louisville lubbock macon madison memphis miami midland-odessa milwaukee minneapolis-stpaul mobile-baldwin-county modesto montgomery napa-sonoma naples nashville new-orleans new-york north-jersey ocala ogden oklahoma-city omaha orange-county orlando ottawa palm-beach pensacola philadelphia phoenix piedmont-triad pittsburgh portland portland-me providence raleigh-durham regina reno richmond rio-grande-valley roanoke rochester rockford sacramento salem-or salt-lake-city san-angelo san-antonio san-diego san-francisco san-jose santa-barbara santa-cruz saskatoon savannah-hilton-head seattle shreveport-bossier sioux-falls south-bend spokane-coeur-dalene springfield-mo springfield-ma stcatharines-niagara st-johns stlouis stockton sudbury syracuse tallahassee tampa-bay-area toledo topeka-lawrence greater-toronto-area tucson tulsa vancouver ventura-county victoria washington-dc westchester-county wichita wilmington-newark windsor winnipeg worcester youngstown[57]&offset=0&limit=250
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector = "division_id=$($all_ids[57])&offset=0&limit=250";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector
+division_id=grand-rapids&offset=0&limit=250
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $call = $URL + $Token + "?" + $selector
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $call
+https://partner-api.groupon.com/deals.json?tsToken=US_AFF_0_209439_212556_0?division_id=grand-rapids&offset=0&limit=250
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals1 = [ordered] @{}
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals1 = Invoke-RestMethod -uri $call
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals1
+
+
+deals                : {@{id=elan-natural-beauty;
+                       uuid=ec2fdde2-33d5-44a6-84a5-6a5c4b9590f5;
+                       dealUrl=https://www.groupon.com/deals/elan-natural-beauty;
+                       title=$48 for $95 Worth of Services — Elan Natural Beauty;
+                       announcementTitle=49% Off Services;
+                       shortAnnouncementTitle=Hair Conditioning;
+                       finePrint=Appointment required, same day appointments
+                       accepted. Limit 1 per person, may buy 1 additional as
+                       gift(s). May be repurchased every 30 days. ;
+                       highlightsHtml=<p>From the merchant: Trendsetting salon,
+                       offering holistic &#8220;hairapy&#8221;, using only the
+                       safest and most natural techniques and products. </p>;
+                       pitchHtml=; soldQuantity=-1; limitedQuantityRemaining=;
+                       tippingPoint=0; soldQuantityMessage=-1; placeholderUrl=https:/
+                       /secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.p
+                       ng; grid4ImageUrl=https://img.grouponcdn.com/deal/H6d3B7f4yTB6
+                       rutoSZhyThdSbbL/H6-4267x3305/v1/t300x182.jpg; grid6ImageUrl=ht
+                       tps://img.grouponcdn.com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4
+                       267x3305/v1/t460x279.jpg; largeImageUrl=https://img.grouponcdn
+                       .com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4267x3305/v1/t440x300
+                       .jpg; mediumImageUrl=https://img.grouponcdn.com/deal/H6d3B7f4y
+                       TB6rutoSZhyThdSbbL/H6-4267x3305/v1/t100x100.jpg; smallImageUrl
+                       =https://img.grouponcdn.com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H
+                       6-4267x3305/v1/t50x50.jpg; sidebarImageUrl=https://img.groupon
+                       cdn.com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4267x3305/v1/t200x
+                       300.jpg; status=open; type=groupon; accessType=extended;
+                       endAt=2041-01-19T05:00:00Z; startAt=2016-09-19T04:00:00Z;
+                       tippedAt=2016-09-19T04:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[];
+                       division=; grouponRating=; allowedInCart=False;
+                       isInviteOnly=False; shippingAddressRequired=False;
+                       isOptionListComplete=True; isMerchandisingDeal=False;
+                       isNowDeal=False; isSoldOut=False; isTipped=True;
+                       isTravelBookableDeal=False; isGliveInventoryDeal=False;
+                       isAutoRefundEnabled=False; isGiftable=True;
+                       placementPriority=nearby; redemptionLocation=Central
+                       Baltimore; locationNote=; vip=; fulfillmentMethod=;
+                       tags=System.Object[]; displayOptions=System.Object[];
+                       textAd=; merchant=; options=System.Object[]; says=;
+                       salesforceLink=}, @{id=lumbini-restaurant-5;
+                       uuid=ddda99e8-a476-2089-cc36-ee0eea958bcc;
+                       dealUrl=https://www.groupon.com/deals/lumbini-restaurant-5;
+                       title=$15 for $30 Worth of Indian and Nepalese Dinner Cuisine
+                       for Two at Lumbini Restaurant; announcementTitle=50% Off
+                       Indian & Nepalese Food at Lumbini Restaurant;
+                       shortAnnouncementTitle=Indian and Nepalese Cuisine;
+                       finePrint=Valid for dinner only; not valid for lunch or
+                       buffet. Not valid for cash back. Reservation required. Limit
+                       1 per person, may buy 1 additional as gift(s). Limit 1 per
+                       visit. Limit 1 per table. Must use promotional value in 1
+                       visit(s). Valid for dine-in only. Must purchase 1 food item.
+                       Not valid with other offers or promotions. ;
+                       highlightsHtml=<p>Charcoal-roasted chicken, tandoor-barbecued
+                       lamb, and baked eggplant simmer in sauces and Himalayan
+                       spices</p>; pitchHtml=<p>Group dining is an easy way to
+                       socialize and to encourage friends to accept the mouth
+                       growing on your back. Show off party tricks with this
+                       voucher.</p>
+
+                       <h4>The Deal</h4>
+
+                       <ul>
+                         <li>$15 for $30 worth of Indian and Nepalese dinner cuisine
+                       for two or more</li>
+                         <li>See the <a
+                       href="http://lumbinirestaurant.com/menu/">menu</a></li>
+                       </ul>; soldQuantity=-1; limitedQuantityRemaining=;
+                       tippingPoint=0; soldQuantityMessage=-1; placeholderUrl=https:/
+                       /secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.p
+                       ng; grid4ImageUrl=https://img.grouponcdn.com/iam/jPKm9JXhSfee1
+                       EYpZKP2/MC-5000x3000/v1/t300x182.jpg; grid6ImageUrl=https://im
+                       g.grouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC-5000x3000/v1/t460
+                       x279.jpg; largeImageUrl=https://img.grouponcdn.com/iam/jPKm9JX
+                       hSfee1EYpZKP2/MC-5000x3000/v1/t440x300.jpg; mediumImageUrl=htt
+                       ps://img.grouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC-5000x3000/
+                       v1/t100x100.jpg; smallImageUrl=https://img.grouponcdn.com/iam/
+                       jPKm9JXhSfee1EYpZKP2/MC-5000x3000/v1/t50x50.jpg; sidebarImageU
+                       rl=https://img.grouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC-5000
+                       x3000/v1/t200x300.jpg; status=open; type=groupon;
+                       accessType=extended; endAt=2039-01-19T04:59:59Z;
+                       startAt=2014-09-15T04:00:00Z; tippedAt=2014-09-14T04:00:00Z;
+                       areas=System.Object[]; channels=System.Object[];
+                       dealTypes=System.Object[]; division=; grouponRating=;
+                       allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False;
+                       isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False;
+                       isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Central Baltimore; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=},
+                       @{id=advanced-correction-chiropractic-and-physical-therapy-1;
+                       uuid=c38403fe-de93-11e2-b391-0025906a929e; dealUrl=https://www
+                       .groupon.com/deals/advanced-correction-chiropractic-and-physic
+                       al-therapy-1; title=One, Two, or Three Chiropractic
+                       Appointments at Advanced Correction Chiropractic & Physical
+                       Therapy (Up to 92% Off); announcementTitle=Up to 92% Off
+                       Chiropractic Care; shortAnnouncementTitle=Chiropractic Care;
+                       finePrint=New customers only. Appointment required. Limit 1
+                       per person, may buy 1 additional as gift(s). Limit 1 per
+                       visit. Valid only for option purchased. All goods or services
+                       must be used by the same person. ; highlightsHtml=<p>Spinal
+                       adjustments, electrical stimulation and massage therapy
+                       address imbalances and pain after exams and x-rays</p>;
+                       pitchHtml=<p>Like the hand inside a sock puppet, the spine
+                       supports the body&#8217;s every motion and keeps it from
+                       collapsing into a formless sack. Shape up with this
+                       voucher.</p>
+
+                       <h4>Choose From Three Options</h4>
+
+                       <p>$23 for one chiropractic appointment (up to a $295 total
+                       value)</p>
+
+                       <ul>
+                         <li>Initial exam (a $150 value)</li>
+                         <li>X-ray if needed (a $100 value)</li>
+                         <li>Single therapy (a $45 value) </li>
+                       </ul>
+
+                       <p>$49 for two chiropractic appointments (up to a $495 total
+                       value)</p>
+
+                       <ul>
+                         <li>Initial exam (a $150 value)</li>
+                         <li>X-ray if needed on first visit and follow-up on second
+                       visit if needed (a $100 value each)</li>
+                         <li>Spinal adjustment on first and second visit (a $50
+                       value each)</li>
+                         <li>Single therapy on second visit (a $45 value) </li>
+                       </ul>
+
+                       <p>$59 for three chiropractic appointments (up to a $635
+                       total value)</p>
+
+                       <ul>
+                         <li>Initial exam (a $150 value)</li>
+                         <li>X-ray on first visit if needed and follow-up on second
+                       visit if needed (a $100 value each)</li>
+                         <li>Spinal adjustment on first, second, and third visits (a
+                       $50 value each)</li>
+                         <li>Electrical-stimulation therapy on second and third
+                       visit (a $45 value each)</li>
+                         <li>Single therapy on third visit (a $45 value) </li>
+                       </ul>
+
+                       <p>Therapies will be chosen based on each patient&#8217;s
+                       individual needs; available treatments include electrical
+                       stimulation, mechanical massage table, therapeutic exercises,
+                       axial traction and extension traction.</p>; soldQuantity=-1;
+                       limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.g
+                       rouponcdn.com/images/groupon/grayPlaceholder.png; grid4ImageUr
+                       l=https://img.grouponcdn.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048
+                       x1229/v1/t300x182.jpg; grid6ImageUrl=https://img.grouponcdn.co
+                       m/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1229/v1/t460x279.jpg; larg
+                       eImageUrl=https://img.grouponcdn.com/deal/pANcKjuRj6eUXwkWxu7D
+                       /uT-2048x1229/v1/t440x300.jpg; mediumImageUrl=https://img.grou
+                       poncdn.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1229/v1/t100x100.
+                       jpg; smallImageUrl=https://img.grouponcdn.com/deal/pANcKjuRj6e
+                       UXwkWxu7D/uT-2048x1229/v1/t50x50.jpg; sidebarImageUrl=https://
+                       img.grouponcdn.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1229/v1/t
+                       200x300.jpg; status=open; type=groupon; accessType=extended;
+                       endAt=2037-11-06T04:59:59Z; startAt=2013-07-06T04:00:00Z;
+                       tippedAt=2013-07-06T04:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[];
+                       division=; grouponRating=; allowedInCart=False;
+                       isInviteOnly=False; shippingAddressRequired=False;
+                       isOptionListComplete=True; isMerchandisingDeal=False;
+                       isNowDeal=False; isSoldOut=False; isTipped=True;
+                       isTravelBookableDeal=False; isGliveInventoryDeal=False;
+                       isAutoRefundEnabled=False; isGiftable=True;
+                       placementPriority=nearby; redemptionLocation=Central
+                       Baltimore; locationNote=; vip=; fulfillmentMethod=;
+                       tags=System.Object[]; displayOptions=System.Object[];
+                       textAd=; merchant=; options=System.Object[]; says=;
+                       salesforceLink=}, @{id=local-flavor-cazbar-turkish-taverna-3;
+                       uuid=ccbaf2b9-0220-459f-867c-a0b1bdfc1c0b; dealUrl=https://www
+                       .groupon.com/deals/local-flavor-cazbar-turkish-taverna-3;
+                       title=$15 For $30 Worth Of Turkish Cuisine;
+                       announcementTitle=$15 For $30 Worth Of Turkish Cuisine;
+                       shortAnnouncementTitle=Cazbar Turkish Taverna;
+                       finePrint=<p>Merchant will abide by gift certificate state
+                       laws. No cash or credit back. Each certificate must be used
+                       in one visit. Not valid on tax or gratuity. Limit 1
+                       certificate per table per visit. Certificate cannot be used
+                       in conjunction with any other certificate, coupon, special or
+                       promotion. Dine in only; not valid for take-out or
+                       delivery.</p><strong>ALL SALES FINAL. Groupon promo codes may
+                       not be used for this offer. </strong>Amount paid expires 5
+                       years after purchase. Groupon voucher Terms of Sale do not
+                       apply. See Local Flavor certificate terms under "How Discount
+                       Certificates Work" <a
+                       href="https://www.localflavor.com/TermsOfService">here</a>.;
+                       highlightsHtml=; pitchHtml=<p><p><p>Cazbar Turkish
+                       Taverna&#39;svast menu will have your taste buds traveling to
+                       far off lands, without leaving town. Take an exotic dining
+                       journey with this Deal, good for $30 of authentic Turkish
+                       cuisine, including kebabs, luscious seafood, lamb, beef,
+                       vegetarian dishes and more for only $15.</p></p><strong>This
+                       deal is made available on Groupon by Local Flavor. Customers
+                       will receive a Local Flavor certificate, not a Groupon
+                       voucher. Groupon is not affiliated with or sponsored by
+                       Cazbar Turkish Taverna in connection with this
+                       deal.</strong></p>; soldQuantity=-1;
+                       limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.g
+                       rouponcdn.com/images/groupon/grayPlaceholder.png; grid4ImageUr
+                       l=https://img.grouponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPk
+                       vDEF/2u-1400x935/v1/t300x182.jpg; grid6ImageUrl=https://img.gr
+                       ouponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400x935
+                       /v1/t460x279.jpg; largeImageUrl=https://img.grouponcdn.com/pwa
+                       _test/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400x935/v1/t440x300.jpg
+                       ; mediumImageUrl=https://img.grouponcdn.com/pwa_test/2uoCqWxYf
+                       fpeuesWN7owiNPkvDEF/2u-1400x935/v1/t100x100.jpg; smallImageUrl
+                       =https://img.grouponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPkv
+                       DEF/2u-1400x935/v1/t50x50.jpg; sidebarImageUrl=https://img.gro
+                       uponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400x935/
+                       v1/t200x300.jpg; status=open; type=groupon;
+                       accessType=featured; endAt=2199-01-02T23:59:00Z;
+                       startAt=2019-06-01T00:00:00Z; tippedAt=2019-06-01T00:00:00Z;
+                       areas=System.Object[]; channels=System.Object[];
+                       dealTypes=System.Object[]; division=; grouponRating=;
+                       allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False;
+                       isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False;
+                       isGiftable=False; placementPriority=nearby;
+                       redemptionLocation=Central Baltimore; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=}...}
+facets               : {}
+pagination           : @{offset=0; count=200}
+relevanceService     : @{persistentRanking=updated; context=web_all;
+                       treatment=1dc7cdc8-b09e-84bf-faf0-55e308686758}
+dealSubsetAttributes : {}
+
+
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals2 = [ordered] @{}
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $call
+https://partner-api.groupon.com/deals.json?tsToken=US_AFF_0_209439_212556_0?division_id=grand-rapids&offset=0&limit=250
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector
+division_id=grand-rapids&offset=0&limit=250
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $selector = "division_id=$($all_ids[57])&offset=250&limit=250";
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $call = $URL + $Token + "?" + $selector
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals2 = Invoke-RestMethod -Uri $call
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals2
+
+
+deals                : {}
+facets               : {}
+pagination           : @{offset=250; count=200}
+relevanceService     : @{persistentRanking=updated; context=web_all;
+                       treatment=1dc7cdc8-b09e-84bf-faf0-55e308686758}
+dealSubsetAttributes : {}
+
+
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals2.deals
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals1
+
+
+deals                : {@{id=elan-natural-beauty;
+                       uuid=ec2fdde2-33d5-44a6-84a5-6a5c4b9590f5;
+                       dealUrl=https://www.groupon.com/deals/elan-natural-beauty; title=$48
+                       for $95 Worth of Services — Elan Natural Beauty;
+                       announcementTitle=49% Off Services; shortAnnouncementTitle=Hair
+                       Conditioning; finePrint=Appointment required, same day appointments
+                       accepted. Limit 1 per person, may buy 1 additional as gift(s). May
+                       be repurchased every 30 days. ; highlightsHtml=<p>From the merchant:
+                       Trendsetting salon, offering holistic &#8220;hairapy&#8221;, using
+                       only the safest and most natural techniques and products. </p>;
+                       pitchHtml=; soldQuantity=-1; limitedQuantityRemaining=;
+                       tippingPoint=0; soldQuantityMessage=-1; placeholderUrl=https://secure
+                       -assets.grouponcdn.com/images/groupon/grayPlaceholder.png; grid4Image
+                       Url=https://img.grouponcdn.com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-42
+                       67x3305/v1/t300x182.jpg; grid6ImageUrl=https://img.grouponcdn.com/dea
+                       l/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4267x3305/v1/t460x279.jpg; largeImag
+                       eUrl=https://img.grouponcdn.com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4
+                       267x3305/v1/t440x300.jpg; mediumImageUrl=https://img.grouponcdn.com/d
+                       eal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4267x3305/v1/t100x100.jpg; smallIm
+                       ageUrl=https://img.grouponcdn.com/deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6
+                       -4267x3305/v1/t50x50.jpg; sidebarImageUrl=https://img.grouponcdn.com/
+                       deal/H6d3B7f4yTB6rutoSZhyThdSbbL/H6-4267x3305/v1/t200x300.jpg;
+                       status=open; type=groupon; accessType=extended;
+                       endAt=2041-01-19T05:00:00Z; startAt=2016-09-19T04:00:00Z;
+                       tippedAt=2016-09-19T04:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False;
+                       isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False;
+                       isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Central Baltimore; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=},
+                       @{id=lumbini-restaurant-5;
+                       uuid=ddda99e8-a476-2089-cc36-ee0eea958bcc;
+                       dealUrl=https://www.groupon.com/deals/lumbini-restaurant-5;
+                       title=$15 for $30 Worth of Indian and Nepalese Dinner Cuisine for
+                       Two at Lumbini Restaurant; announcementTitle=50% Off Indian &
+                       Nepalese Food at Lumbini Restaurant; shortAnnouncementTitle=Indian
+                       and Nepalese Cuisine; finePrint=Valid for dinner only; not valid for
+                       lunch or buffet. Not valid for cash back. Reservation required.
+                       Limit 1 per person, may buy 1 additional as gift(s). Limit 1 per
+                       visit. Limit 1 per table. Must use promotional value in 1 visit(s).
+                       Valid for dine-in only. Must purchase 1 food item. Not valid with
+                       other offers or promotions. ; highlightsHtml=<p>Charcoal-roasted
+                       chicken, tandoor-barbecued lamb, and baked eggplant simmer in sauces
+                       and Himalayan spices</p>; pitchHtml=<p>Group dining is an easy way
+                       to socialize and to encourage friends to accept the mouth growing on
+                       your back. Show off party tricks with this voucher.</p>
+
+                       <h4>The Deal</h4>
+
+                       <ul>
+                         <li>$15 for $30 worth of Indian and Nepalese dinner cuisine for
+                       two or more</li>
+                         <li>See the <a
+                       href="http://lumbinirestaurant.com/menu/">menu</a></li>
+                       </ul>; soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.grouponc
+                       dn.com/images/groupon/grayPlaceholder.png; grid4ImageUrl=https://img.
+                       grouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC-5000x3000/v1/t300x182.jpg;
+                        grid6ImageUrl=https://img.grouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC
+                       -5000x3000/v1/t460x279.jpg; largeImageUrl=https://img.grouponcdn.com/
+                       iam/jPKm9JXhSfee1EYpZKP2/MC-5000x3000/v1/t440x300.jpg; mediumImageUrl
+                       =https://img.grouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC-5000x3000/v1/
+                       t100x100.jpg; smallImageUrl=https://img.grouponcdn.com/iam/jPKm9JXhSf
+                       ee1EYpZKP2/MC-5000x3000/v1/t50x50.jpg; sidebarImageUrl=https://img.gr
+                       ouponcdn.com/iam/jPKm9JXhSfee1EYpZKP2/MC-5000x3000/v1/t200x300.jpg;
+                       status=open; type=groupon; accessType=extended;
+                       endAt=2039-01-19T04:59:59Z; startAt=2014-09-15T04:00:00Z;
+                       tippedAt=2014-09-14T04:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False;
+                       isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False;
+                       isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Central Baltimore; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=},
+                       @{id=advanced-correction-chiropractic-and-physical-therapy-1;
+                       uuid=c38403fe-de93-11e2-b391-0025906a929e; dealUrl=https://www.groupo
+                       n.com/deals/advanced-correction-chiropractic-and-physical-therapy-1;
+                       title=One, Two, or Three Chiropractic Appointments at Advanced
+                       Correction Chiropractic & Physical Therapy (Up to 92% Off);
+                       announcementTitle=Up to 92% Off Chiropractic Care;
+                       shortAnnouncementTitle=Chiropractic Care; finePrint=New customers
+                       only. Appointment required. Limit 1 per person, may buy 1 additional
+                       as gift(s). Limit 1 per visit. Valid only for option purchased. All
+                       goods or services must be used by the same person. ;
+                       highlightsHtml=<p>Spinal adjustments, electrical stimulation and
+                       massage therapy address imbalances and pain after exams and
+                       x-rays</p>; pitchHtml=<p>Like the hand inside a sock puppet, the
+                       spine supports the body&#8217;s every motion and keeps it from
+                       collapsing into a formless sack. Shape up with this voucher.</p>
+
+                       <h4>Choose From Three Options</h4>
+
+                       <p>$23 for one chiropractic appointment (up to a $295 total
+                       value)</p>
+
+                       <ul>
+                         <li>Initial exam (a $150 value)</li>
+                         <li>X-ray if needed (a $100 value)</li>
+                         <li>Single therapy (a $45 value) </li>
+                       </ul>
+
+                       <p>$49 for two chiropractic appointments (up to a $495 total
+                       value)</p>
+
+                       <ul>
+                         <li>Initial exam (a $150 value)</li>
+                         <li>X-ray if needed on first visit and follow-up on second visit
+                       if needed (a $100 value each)</li>
+                         <li>Spinal adjustment on first and second visit (a $50 value
+                       each)</li>
+                         <li>Single therapy on second visit (a $45 value) </li>
+                       </ul>
+
+                       <p>$59 for three chiropractic appointments (up to a $635 total
+                       value)</p>
+
+                       <ul>
+                         <li>Initial exam (a $150 value)</li>
+                         <li>X-ray on first visit if needed and follow-up on second visit
+                       if needed (a $100 value each)</li>
+                         <li>Spinal adjustment on first, second, and third visits (a $50
+                       value each)</li>
+                         <li>Electrical-stimulation therapy on second and third visit (a
+                       $45 value each)</li>
+                         <li>Single therapy on third visit (a $45 value) </li>
+                       </ul>
+
+                       <p>Therapies will be chosen based on each patient&#8217;s individual
+                       needs; available treatments include electrical stimulation,
+                       mechanical massage table, therapeutic exercises, axial traction and
+                       extension traction.</p>; soldQuantity=-1; limitedQuantityRemaining=;
+                       tippingPoint=0; soldQuantityMessage=-1; placeholderUrl=https://secure
+                       -assets.grouponcdn.com/images/groupon/grayPlaceholder.png; grid4Image
+                       Url=https://img.grouponcdn.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1229
+                       /v1/t300x182.jpg; grid6ImageUrl=https://img.grouponcdn.com/deal/pANcK
+                       juRj6eUXwkWxu7D/uT-2048x1229/v1/t460x279.jpg; largeImageUrl=https://i
+                       mg.grouponcdn.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1229/v1/t440x300.
+                       jpg; mediumImageUrl=https://img.grouponcdn.com/deal/pANcKjuRj6eUXwkWx
+                       u7D/uT-2048x1229/v1/t100x100.jpg; smallImageUrl=https://img.grouponcd
+                       n.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1229/v1/t50x50.jpg; sidebarIm
+                       ageUrl=https://img.grouponcdn.com/deal/pANcKjuRj6eUXwkWxu7D/uT-2048x1
+                       229/v1/t200x300.jpg; status=open; type=groupon; accessType=extended;
+                       endAt=2037-11-06T04:59:59Z; startAt=2013-07-06T04:00:00Z;
+                       tippedAt=2013-07-06T04:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False;
+                       isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False;
+                       isGiftable=True; placementPriority=nearby;
+                       redemptionLocation=Central Baltimore; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=},
+                       @{id=local-flavor-cazbar-turkish-taverna-3;
+                       uuid=ccbaf2b9-0220-459f-867c-a0b1bdfc1c0b; dealUrl=https://www.groupo
+                       n.com/deals/local-flavor-cazbar-turkish-taverna-3; title=$15 For $30
+                       Worth Of Turkish Cuisine; announcementTitle=$15 For $30 Worth Of
+                       Turkish Cuisine; shortAnnouncementTitle=Cazbar Turkish Taverna;
+                       finePrint=<p>Merchant will abide by gift certificate state laws. No
+                       cash or credit back. Each certificate must be used in one visit. Not
+                       valid on tax or gratuity. Limit 1 certificate per table per visit.
+                       Certificate cannot be used in conjunction with any other
+                       certificate, coupon, special or promotion. Dine in only; not valid
+                       for take-out or delivery.</p><strong>ALL SALES FINAL. Groupon promo
+                       codes may not be used for this offer. </strong>Amount paid expires 5
+                       years after purchase. Groupon voucher Terms of Sale do not apply.
+                       See Local Flavor certificate terms under "How Discount Certificates
+                       Work" <a
+                       href="https://www.localflavor.com/TermsOfService">here</a>.;
+                       highlightsHtml=; pitchHtml=<p><p><p>Cazbar Turkish Taverna&#39;svast
+                       menu will have your taste buds traveling to far off lands, without
+                       leaving town. Take an exotic diningjourney with this Deal, good for
+                       $30 of authentic Turkishcuisine, including kebabs, luscious seafood,
+                       lamb, beef, vegetarian dishes and more for only
+                       $15.</p></p><strong>This deal is made available on Groupon by Local
+                       Flavor. Customers will receive a Local Flavor certificate, not a
+                       Groupon voucher. Groupon is not affiliated with or sponsored by
+                       Cazbar Turkish Taverna in connection with this deal.</strong></p>;
+                       soldQuantity=-1; limitedQuantityRemaining=; tippingPoint=0;
+                       soldQuantityMessage=-1; placeholderUrl=https://secure-assets.grouponc
+                       dn.com/images/groupon/grayPlaceholder.png; grid4ImageUrl=https://img.
+                       grouponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400x935/v1/t
+                       300x182.jpg; grid6ImageUrl=https://img.grouponcdn.com/pwa_test/2uoCqW
+                       xYffpeuesWN7owiNPkvDEF/2u-1400x935/v1/t460x279.jpg; largeImageUrl=htt
+                       ps://img.grouponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400
+                       x935/v1/t440x300.jpg; mediumImageUrl=https://img.grouponcdn.com/pwa_t
+                       est/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400x935/v1/t100x100.jpg; smallIm
+                       ageUrl=https://img.grouponcdn.com/pwa_test/2uoCqWxYffpeuesWN7owiNPkvD
+                       EF/2u-1400x935/v1/t50x50.jpg; sidebarImageUrl=https://img.grouponcdn.
+                       com/pwa_test/2uoCqWxYffpeuesWN7owiNPkvDEF/2u-1400x935/v1/t200x300.jpg
+                       ; status=open; type=groupon; accessType=featured;
+                       endAt=2199-01-02T23:59:00Z; startAt=2019-06-01T00:00:00Z;
+                       tippedAt=2019-06-01T00:00:00Z; areas=System.Object[];
+                       channels=System.Object[]; dealTypes=System.Object[]; division=;
+                       grouponRating=; allowedInCart=False; isInviteOnly=False;
+                       shippingAddressRequired=False; isOptionListComplete=True;
+                       isMerchandisingDeal=False; isNowDeal=False; isSoldOut=False;
+                       isTipped=True; isTravelBookableDeal=False;
+                       isGliveInventoryDeal=False; isAutoRefundEnabled=False;
+                       isGiftable=False; placementPriority=nearby;
+                       redemptionLocation=Central Baltimore; locationNote=; vip=;
+                       fulfillmentMethod=; tags=System.Object[];
+                       displayOptions=System.Object[]; textAd=; merchant=;
+                       options=System.Object[]; says=; salesforceLink=}...}
+facets               : {}
+pagination           : @{offset=0; count=200}
+relevanceService     : @{persistentRanking=updated; context=web_all;
+                       treatment=1dc7cdc8-b09e-84bf-faf0-55e308686758}
+dealSubsetAttributes : {}
+
+
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals1.deals.length
+200
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> $deals1.deals.count
+200
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> git commit -a -m "small changes"
+[master 277da7e] small changes
+ 1 file changed, 276 insertions(+), 9 deletions(-)
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> git push
+git: 'credential-cache' is not a git command. See 'git --help'.
+To https://github.com/lavedon/groupon.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/lavedon/groupon.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> git pull
+fatal: refusing to merge unrelated histories
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> git push -f
+git: 'credential-cache' is not a git command. See 'git --help'.
+Enumerating objects: 43, done.
+Counting objects: 100% (43/43), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (24/24), done.
+Writing objects: 100% (43/43), 41.60 KiB | 1.43 MiB/s, done.
+Total 43 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas: 100% (6/6), done.
+To https://github.com/lavedon/groupon.git
+ + a186f45...277da7e master -> master (forced update)
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> dir
+
+
+    Directory: C:\Users\Luke\documents\powershell\scripts\groupontool
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/13/2019   4:16 PM              0 .gitignore
+-a----       10/11/2019   4:59 AM           4368 all_cities.txt
+-a----       10/13/2019   4:17 PM          47946 exploring_api_transcript.txt
+-a----       10/12/2019   1:48 PM            541 file.csv
+-a----       10/11/2019   4:57 AM          54269 groupon.png
+-a----       10/13/2019   4:38 PM           1181 groupon.ps1
+-a----       10/11/2019   4:57 AM            795 groupon.uml
+-a----       10/11/2019   4:34 AM             34 mytoken.txt
+-a----       10/11/2019   4:33 AM             84 my_credentials.txt
+-a----       10/11/2019   4:11 AM             95 readme.md
+-a----       10/12/2019   1:47 PM            489 sample_deal.csv
+-a----       10/13/2019   9:37 AM         194002 sample_pulling_deals_transcript.txt
+-a----       10/12/2019  12:11 PM            424 style.css
+-a----       10/13/2019   8:56 AM             52 test.txt
+-a----       10/12/2019   8:58 AM            749 the_55_groupon_fields.txt
+-a----       10/13/2019   4:24 PM              0 trying-to-pull-entire-city-output-html.txt
+-a----       10/12/2019  12:18 PM           7821 what_fields_do.html
+-a----       10/12/2019   9:31 AM            428 what_fields_do.txt
+
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> ii .\what_fields_do.html
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> vim .\exploring_api_transcript.txt
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> vim .\what_fields_do.html
+
+PS C:\Users\Luke\documents\powershell\scripts\groupontool> stop-transcript
+**********************
+Windows PowerShell transcript end
+End time: 20191013165829
+**********************

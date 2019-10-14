@@ -1,0 +1,910 @@
+﻿Transcript started, output file is transcript.txt
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].psobject.properties.name
+id
+uuid
+dealUrl
+title
+announcementTitle
+shortAnnouncementTitle
+finePrint
+highlightsHtml
+pitchHtml
+soldQuantity
+limitedQuantityRemaining
+tippingPoint
+soldQuantityMessage
+placeholderUrl
+grid4ImageUrl
+grid6ImageUrl
+largeImageUrl
+mediumImageUrl
+smallImageUrl
+sidebarImageUrl
+status
+type
+accessType
+endAt
+startAt
+tippedAt
+areas
+channels
+dealTypes
+division
+grouponRating
+allowedInCart
+isInviteOnly
+shippingAddressRequired
+isOptionListComplete
+isMerchandisingDeal
+isNowDeal
+isSoldOut
+isTipped
+isTravelBookableDeal
+isGliveInventoryDeal
+isAutoRefundEnabled
+isGiftable
+placementPriority
+redemptionLocation
+locationNote
+vip
+fulfillmentMethod
+tags
+displayOptions
+textAd
+merchant
+options
+says
+salesforceLink
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].d
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].uuid
+93ed5360-8f0a-4ca0-8126-a878535e02d9
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].dealUrl
+http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdouglas-j-aveda-institute-grand-rapids-2%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_source%3DGPN
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].title
+$19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].announcementTitle
+55% Off Haircut Package at Douglas J Aveda Institute
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].shortAnnouncementTitle
+Haircut with Aveda Treatment
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].finePrint
+Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional as gift(s). Valid only for option purchased. All goods or services must be used by the same person. Merchant's standard cancellation policy applies (any fees not to exceed voucher price).
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].highlightsHtml
+<p>Before the haircut, stylists nourish strands with an organic botanical conditioner</p>
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].highlightsHtml
+<p>Before the haircut, stylists nourish strands with an organic botanical conditioner</p>
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].highlightsHtml | get-member
+
+
+   TypeName: System.String
+
+Name             MemberType            Definition
+----             ----------            ----------
+Clone            Method                System.Object Clone(), System.Object ICloneable.Clone()
+CompareTo        Method                int CompareTo(System.Object value), int CompareTo(string strB), int IComparable.CompareTo(System.Ob...
+Contains         Method                bool Contains(string value)
+CopyTo           Method                void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count)
+EndsWith         Method                bool EndsWith(string value), bool EndsWith(string value, System.StringComparison comparisonType), b...
+Equals           Method                bool Equals(System.Object obj), bool Equals(string value), bool Equals(string value, System.StringC...
+GetEnumerator    Method                System.CharEnumerator GetEnumerator(), System.Collections.IEnumerator IEnumerable.GetEnumerator(), ...
+GetHashCode      Method                int GetHashCode()
+GetType          Method                type GetType()
+GetTypeCode      Method                System.TypeCode GetTypeCode(), System.TypeCode IConvertible.GetTypeCode()
+IndexOf          Method                int IndexOf(char value), int IndexOf(char value, int startIndex), int IndexOf(char value, int start...
+IndexOfAny       Method                int IndexOfAny(char[] anyOf), int IndexOfAny(char[] anyOf, int startIndex), int IndexOfAny(char[] a...
+Insert           Method                string Insert(int startIndex, string value)
+IsNormalized     Method                bool IsNormalized(), bool IsNormalized(System.Text.NormalizationForm normalizationForm)
+LastIndexOf      Method                int LastIndexOf(char value), int LastIndexOf(char value, int startIndex), int LastIndexOf(char valu...
+LastIndexOfAny   Method                int LastIndexOfAny(char[] anyOf), int LastIndexOfAny(char[] anyOf, int startIndex), int LastIndexOf...
+Normalize        Method                string Normalize(), string Normalize(System.Text.NormalizationForm normalizationForm)
+PadLeft          Method                string PadLeft(int totalWidth), string PadLeft(int totalWidth, char paddingChar)
+PadRight         Method                string PadRight(int totalWidth), string PadRight(int totalWidth, char paddingChar)
+Remove           Method                string Remove(int startIndex, int count), string Remove(int startIndex)
+Replace          Method                string Replace(char oldChar, char newChar), string Replace(string oldValue, string newValue)
+Split            Method                string[] Split(Params char[] separator), string[] Split(char[] separator, int count), string[] Spli...
+StartsWith       Method                bool StartsWith(string value), bool StartsWith(string value, System.StringComparison comparisonType...
+Substring        Method                string Substring(int startIndex), string Substring(int startIndex, int length)
+ToBoolean        Method                bool IConvertible.ToBoolean(System.IFormatProvider provider)
+ToByte           Method                byte IConvertible.ToByte(System.IFormatProvider provider)
+ToChar           Method                char IConvertible.ToChar(System.IFormatProvider provider)
+ToCharArray      Method                char[] ToCharArray(), char[] ToCharArray(int startIndex, int length)
+ToDateTime       Method                datetime IConvertible.ToDateTime(System.IFormatProvider provider)
+ToDecimal        Method                decimal IConvertible.ToDecimal(System.IFormatProvider provider)
+ToDouble         Method                double IConvertible.ToDouble(System.IFormatProvider provider)
+ToInt16          Method                int16 IConvertible.ToInt16(System.IFormatProvider provider)
+ToInt32          Method                int IConvertible.ToInt32(System.IFormatProvider provider)
+ToInt64          Method                long IConvertible.ToInt64(System.IFormatProvider provider)
+ToLower          Method                string ToLower(), string ToLower(cultureinfo culture)
+ToLowerInvariant Method                string ToLowerInvariant()
+ToSByte          Method                sbyte IConvertible.ToSByte(System.IFormatProvider provider)
+ToSingle         Method                float IConvertible.ToSingle(System.IFormatProvider provider)
+ToString         Method                string ToString(), string ToString(System.IFormatProvider provider), string IConvertible.ToString(S...
+ToType           Method                System.Object IConvertible.ToType(type conversionType, System.IFormatProvider provider)
+ToUInt16         Method                uint16 IConvertible.ToUInt16(System.IFormatProvider provider)
+ToUInt32         Method                uint32 IConvertible.ToUInt32(System.IFormatProvider provider)
+ToUInt64         Method                uint64 IConvertible.ToUInt64(System.IFormatProvider provider)
+ToUpper          Method                string ToUpper(), string ToUpper(cultureinfo culture)
+ToUpperInvariant Method                string ToUpperInvariant()
+Trim             Method                string Trim(Params char[] trimChars), string Trim()
+TrimEnd          Method                string TrimEnd(Params char[] trimChars)
+TrimStart        Method                string TrimStart(Params char[] trimChars)
+Chars            ParameterizedProperty char Chars(int index) {get;}
+Length           Property              int Length {get;}
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].highlightsHtml.length
+89
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].pitchHtml
+<ul>
+  <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+</ul>
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].pitchHtml
+<ul>
+  <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+</ul>
+PS C:\users\luke\documents\powershell\scripts\groupontool> [xml]$html = $deals.deals[0].pitchHtml
+PS C:\users\luke\documents\powershell\scripts\groupontool> $hml
+PS C:\users\luke\documents\powershell\scripts\groupontool> $html
+
+ul
+--
+ul
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $html.ul
+
+li
+--
+Haircut and Botanical Treatment: Valid Tuesday–Friday
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> ii what_fields_do.html
+PS C:\users\luke\documents\powershell\scripts\groupontool> git add  *.html
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> git commit -a -m "creating some reference docs"
+[master b431f73] creating some reference docs
+ 2 files changed, 66 insertions(+)
+ delete mode 100644 Desktop/example/example_code.py
+ create mode 100644 documents/powershell/Scripts/groupontool/what_fields_do.html
+PS C:\users\luke\documents\powershell\scripts\groupontool> git push
+git: 'credential-cache' is not a git command. See 'git --help'.
+To https://github.com/lavedon/groupon.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/lavedon/groupon.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].soldQuantity
+-1
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].limitedQuantityRemaining
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].limitedQuantityRemaining
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].tippingPoint
+0
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].soldQuantityMessage
+-1
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].placeholderUrl
+https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grid4ImageUrl
+https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t300x182.jpg
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grid6ImageUrl
+https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t460x279.jpg
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].largeImageUrl
+https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t440x300.jpg
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].mediumImageUrl
+https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t100x100.jpg
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].smallImageUrl
+https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t50x50.jpg
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].sidebarImageUrl
+https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t200x300.jpg
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].status
+open
+PS C:\users\luke\documents\powershell\scripts\groupontool> git commit -a -m "reference doc 50% done"
+[master 7cfb010] reference doc 50% done
+ 1 file changed, 73 insertions(+), 1 deletion(-)
+PS C:\users\luke\documents\powershell\scripts\groupontool> git push
+git: 'credential-cache' is not a git command. See 'git --help'.
+To https://github.com/lavedon/groupon.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/lavedon/groupon.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].type
+groupon
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].type
+groupon
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].accessType
+extended
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].endAt
+2042-01-26T04:59:59Z
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].startAt
+2017-09-22T04:00:00Z
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].tippedAt
+2017-09-21T04:00:00Z
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].areas
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].areas
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].channels
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].channels
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].dealTypes
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].dealTypes
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].division
+
+
+id                      : grand-rapids
+name                    : Grand Rapids
+timezone                : Eastern Daylight Time
+timezoneOffsetInSeconds : -14400
+timezoneIdentifier      : America/New_York
+lat                     : 42.9634
+lng                     : -85.6681
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grouponRating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grouponRating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.psobject.properties.name
+deals
+facets
+pagination
+relevanceService
+dealSubsetAttributes
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].psobject.properties.name
+id
+uuid
+dealUrl
+title
+announcementTitle
+shortAnnouncementTitle
+finePrint
+highlightsHtml
+pitchHtml
+soldQuantity
+limitedQuantityRemaining
+tippingPoint
+soldQuantityMessage
+placeholderUrl
+grid4ImageUrl
+grid6ImageUrl
+largeImageUrl
+mediumImageUrl
+smallImageUrl
+sidebarImageUrl
+status
+type
+accessType
+endAt
+startAt
+tippedAt
+areas
+channels
+dealTypes
+division
+grouponRating
+allowedInCart
+isInviteOnly
+shippingAddressRequired
+isOptionListComplete
+isMerchandisingDeal
+isNowDeal
+isSoldOut
+isTipped
+isTravelBookableDeal
+isGliveInventoryDeal
+isAutoRefundEnabled
+isGiftable
+placementPriority
+redemptionLocation
+locationNote
+vip
+fulfillmentMethod
+tags
+displayOptions
+textAd
+merchant
+options
+says
+salesforceLink
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].psobject.properties.name
+id
+uuid
+dealUrl
+title
+announcementTitle
+shortAnnouncementTitle
+finePrint
+highlightsHtml
+pitchHtml
+soldQuantity
+limitedQuantityRemaining
+tippingPoint
+soldQuantityMessage
+placeholderUrl
+grid4ImageUrl
+grid6ImageUrl
+largeImageUrl
+mediumImageUrl
+smallImageUrl
+sidebarImageUrl
+status
+type
+accessType
+endAt
+startAt
+tippedAt
+areas
+channels
+dealTypes
+division
+grouponRating
+allowedInCart
+isInviteOnly
+shippingAddressRequired
+isOptionListComplete
+isMerchandisingDeal
+isNowDeal
+isSoldOut
+isTipped
+isTravelBookableDeal
+isGliveInventoryDeal
+isAutoRefundEnabled
+isGiftable
+placementPriority
+redemptionLocation
+locationNote
+vip
+fulfillmentMethod
+tags
+displayOptions
+textAd
+merchant
+options
+says
+salesforceLink
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].grouponRating
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].allowedInCart
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isInviteOnly
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].shipping
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].shippingAddressRequired
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isOptionListComplete
+True
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isMerchandisingDeal
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isNowDeal
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isSoldOut
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isTipped
+True
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isTravelBookableDeal
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isGliveInventoryDeal
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isGiftable
+True
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isAutoRefundEnabled
+False
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].isGiftable
+True
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].placementPriority
+nearby
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].redemptionLocation
+Heartside-Downtown Grand Rapids
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].locationNote
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].locationNote
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].vip
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].vip
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].fulfillment
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].fulfillmentMethod
+PS C:\users\luke\documents\powershell\scripts\groupontool> fulfillmentMethod
+fulfillmentMethod : The term 'fulfillmentMethod' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try 
+again.
+At line:1 char:1
++ fulfillmentMethod
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (fulfillmentMethod:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fulfillmentMethod : The term 'fulfillmentMethod' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ fulfillmentMethod
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (fulfillmentMethod:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].fulfillmentMethod
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].tags
+
+name                    uuid
+----                    ----
+Hair Cuts & Styling     d03a8723-1260-443f-9b7d-c1c698be6c51
+Salon - Haircut - Women bead349e-b392-4d9b-a9a7-a7fba8052a9a
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> ii what_fields_do.html
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].displayOptions
+
+name                    enabled
+----                    -------
+discount                   True
+quantity                   True
+timer                      True
+merchandisingType
+showRedemptionLocations    True
+showPrice                  True
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].textAd
+
+line1 line2 headline
+----- ----- --------
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].merchant
+
+
+id          : douglas-j-aveda-institute-grand-rapids
+uuid        : 3d6b8296-e3a4-47c8-9e6b-9775d573d715
+name        : Douglas J Aveda Institute
+websiteUrl  : http://www.douglasj.edu/
+twitterUrl  :
+ratings     :
+facebookUrl :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options
+
+
+id                      : 65275529
+uuid                    : ef1bb990-6637-41d5-9ee4-15b437b7e765
+bookable                : False
+buyUrl                  : https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529
+customField             :
+details                 : {@{description=Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional
+                          as gift(s). Valid only for option purchased. All goods or services must be used by the same person. Merchant's
+                          standard cancellation policy applies (any fees not to exceed voucher price). }}
+discount                : @{amount=2450; currencyCode=USD; formattedAmount=$24.50; currencyExponent=2}
+discountPercent         : 55
+endAt                   : 2042-01-26T04:59:59Z
+expiresAt               : 2020-01-10T00:00:00Z
+expiresInDays           : 90
+externalUrl             :
+isLimitedQuantity       : True
+isSoldOut               : False
+maximumPurchaseQuantity : 6
+minimumPurchaseQuantity : 1
+price                   : @{amount=1950; currencyCode=USD; formattedAmount=$19.50; currencyExponent=2}
+traits                  : {}
+redemptionLocations     : {@{name=Heartside-Downtown Grand Rapids; streetAddress1=138 Commerce Avenue Southwest; streetAddress2=; state=MI;
+                          city=Grand Rapids; neighborhood=Heartside-Downtown Grand Rapids; postalCode=49503; country=US;
+                          phoneNumber=+16168083078; id=26987080; uuid=b028a1fa-4038-b06a-768b-014c87d775da; ordering=0; menu=;
+                          openHours=System.Object[]; placeAttributes=System.Object[]; lat=42.959973; lng=-85.6687479}}
+soldQuantity            : -1
+soldQuantityMessage     : -1
+specificAttributes      : @{takeoutDelivery=}
+status                  : open
+title                   : Haircut and Botanical Treatment: Valid Tuesday–Friday
+value                   : @{amount=4400; currencyCode=USD; formattedAmount=$44.00; currencyExponent=2}
+isGuestCheckoutEligible : True
+inventoryService        : @{id=voucher}
+customFields            : {}
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options.price
+
+amount currencyCode formattedAmount currencyExponent
+------ ------------ --------------- ----------------
+  1950 USD          $19.50                         2
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options.price
+
+amount currencyCode formattedAmount currencyExponent
+------ ------------ --------------- ----------------
+  1950 USD          $19.50                         2
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options.value
+
+amount currencyCode formattedAmount currencyExponent
+------ ------------ --------------- ----------------
+  4400 USD          $44.00                         2
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].options.says
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].says
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].id         
+douglas-j-aveda-institute-grand-rapids-2
+PS C:\users\luke\documents\powershell\scripts\groupontool> uuid       
+PS C:\users\luke\documents\powershell\scripts\groupontool> name       
+name : The term 'name' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ name
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+name : The term 'name' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the
+name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ name
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> websiteUrl 
+websiteUrl : The term 'websiteUrl' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ websiteUrl
++ ~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (websiteUrl:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+websiteUrl : The term 'websiteUrl' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ websiteUrl
++ ~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (websiteUrl:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> twitterUrl 
+twitterUrl : The term 'twitterUrl' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ twitterUrl
++ ~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (twitterUrl:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+twitterUrl : The term 'twitterUrl' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ twitterUrl
++ ~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (twitterUrl:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> ratings    
+ratings : The term 'ratings' is not recognized as the name of a cmdlet, function, script file, or operable program. 
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ ratings
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ratings:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ratings : The term 'ratings' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of
+the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ ratings
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ratings:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].salesforcelink
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].salesforcelink
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].salesforcelink
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].fulfillmentMethod
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].fulfillmentMethod
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0]
+
+
+id                       : douglas-j-aveda-institute-grand-rapids-2
+uuid                     : 93ed5360-8f0a-4ca0-8126-a878535e02d9
+dealUrl                  : http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdouglas
+                           -j-aveda-institute-grand-rapids-2%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_s
+                           ource%3DGPN
+title                    : $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+announcementTitle        : 55% Off Haircut Package at Douglas J Aveda Institute
+shortAnnouncementTitle   : Haircut with Aveda Treatment
+finePrint                : Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional as gift(s).
+                           Valid only for option purchased. All goods or services must be used by the same person. Merchant's standard
+                           cancellation policy applies (any fees not to exceed voucher price).
+highlightsHtml           : <p>Before the haircut, stylists nourish strands with an organic botanical conditioner</p>
+pitchHtml                : <ul>
+                             <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+                           </ul>
+soldQuantity             : -1
+limitedQuantityRemaining :
+tippingPoint             : 0
+soldQuantityMessage      : -1
+placeholderUrl           : https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png
+grid4ImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t300x182.jpg
+grid6ImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t460x279.jpg
+largeImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t440x300.jpg
+mediumImageUrl           : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t100x100.jpg
+smallImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t50x50.jpg
+sidebarImageUrl          : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t200x300.jpg
+status                   : open
+type                     : groupon
+accessType               : extended
+endAt                    : 2042-01-26T04:59:59Z
+startAt                  : 2017-09-22T04:00:00Z
+tippedAt                 : 2017-09-21T04:00:00Z
+areas                    : {}
+channels                 : {}
+dealTypes                : {}
+division                 : @{id=grand-rapids; name=Grand Rapids; timezone=Eastern Daylight Time; timezoneOffsetInSeconds=-14400;
+                           timezoneIdentifier=America/New_York; lat=42.9634; lng=-85.6681}
+grouponRating            :
+allowedInCart            : False
+isInviteOnly             : False
+shippingAddressRequired  : False
+isOptionListComplete     : True
+isMerchandisingDeal      : False
+isNowDeal                : False
+isSoldOut                : False
+isTipped                 : True
+isTravelBookableDeal     : False
+isGliveInventoryDeal     : False
+isAutoRefundEnabled      : False
+isGiftable               : True
+placementPriority        : nearby
+redemptionLocation       : Heartside-Downtown Grand Rapids
+locationNote             :
+vip                      :
+fulfillmentMethod        :
+tags                     : {@{name=Hair Cuts & Styling; uuid=d03a8723-1260-443f-9b7d-c1c698be6c51}, @{name=Salon - Haircut - Women;
+                           uuid=bead349e-b392-4d9b-a9a7-a7fba8052a9a}}
+displayOptions           : {@{name=discount; enabled=True}, @{name=quantity; enabled=True}, @{name=timer; enabled=True},
+                           @{name=merchandisingType; value=other}...}
+textAd                   : @{line1=; line2=; headline=}
+merchant                 : @{id=douglas-j-aveda-institute-grand-rapids; uuid=3d6b8296-e3a4-47c8-9e6b-9775d573d715; name=Douglas J Aveda
+                           Institute; websiteUrl=http://www.douglasj.edu/; twitterUrl=; ratings=; facebookUrl=}
+options                  : {@{id=65275529; uuid=ef1bb990-6637-41d5-9ee4-15b437b7e765; bookable=False;
+                           buyUrl=https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529;
+                           customField=; details=System.Object[]; discount=; discountPercent=55; endAt=2042-01-26T04:59:59Z;
+                           expiresAt=2020-01-10T00:00:00Z; expiresInDays=90; externalUrl=; isLimitedQuantity=True; isSoldOut=False;
+                           maximumPurchaseQuantity=6; minimumPurchaseQuantity=1; price=; traits=System.Object[];
+                           redemptionLocations=System.Object[]; soldQuantity=-1; soldQuantityMessage=-1; specificAttributes=; status=open;
+                           title=Haircut and Botanical Treatment: Valid Tuesday–Friday; value=; isGuestCheckoutEligible=True;
+                           inventoryService=; customFields=System.Object[]}}
+says                     :
+salesforceLink           :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].name
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].name
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0]
+
+
+id                       : douglas-j-aveda-institute-grand-rapids-2
+uuid                     : 93ed5360-8f0a-4ca0-8126-a878535e02d9
+dealUrl                  : http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdouglas
+                           -j-aveda-institute-grand-rapids-2%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_s
+                           ource%3DGPN
+title                    : $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+announcementTitle        : 55% Off Haircut Package at Douglas J Aveda Institute
+shortAnnouncementTitle   : Haircut with Aveda Treatment
+finePrint                : Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional as gift(s).
+                           Valid only for option purchased. All goods or services must be used by the same person. Merchant's standard
+                           cancellation policy applies (any fees not to exceed voucher price).
+highlightsHtml           : <p>Before the haircut, stylists nourish strands with an organic botanical conditioner</p>
+pitchHtml                : <ul>
+                             <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+                           </ul>
+soldQuantity             : -1
+limitedQuantityRemaining :
+tippingPoint             : 0
+soldQuantityMessage      : -1
+placeholderUrl           : https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png
+grid4ImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t300x182.jpg
+grid6ImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t460x279.jpg
+largeImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t440x300.jpg
+mediumImageUrl           : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t100x100.jpg
+smallImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t50x50.jpg
+sidebarImageUrl          : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t200x300.jpg
+status                   : open
+type                     : groupon
+accessType               : extended
+endAt                    : 2042-01-26T04:59:59Z
+startAt                  : 2017-09-22T04:00:00Z
+tippedAt                 : 2017-09-21T04:00:00Z
+areas                    : {}
+channels                 : {}
+dealTypes                : {}
+division                 : @{id=grand-rapids; name=Grand Rapids; timezone=Eastern Daylight Time; timezoneOffsetInSeconds=-14400;
+                           timezoneIdentifier=America/New_York; lat=42.9634; lng=-85.6681}
+grouponRating            :
+allowedInCart            : False
+isInviteOnly             : False
+shippingAddressRequired  : False
+isOptionListComplete     : True
+isMerchandisingDeal      : False
+isNowDeal                : False
+isSoldOut                : False
+isTipped                 : True
+isTravelBookableDeal     : False
+isGliveInventoryDeal     : False
+isAutoRefundEnabled      : False
+isGiftable               : True
+placementPriority        : nearby
+redemptionLocation       : Heartside-Downtown Grand Rapids
+locationNote             :
+vip                      :
+fulfillmentMethod        :
+tags                     : {@{name=Hair Cuts & Styling; uuid=d03a8723-1260-443f-9b7d-c1c698be6c51}, @{name=Salon - Haircut - Women;
+                           uuid=bead349e-b392-4d9b-a9a7-a7fba8052a9a}}
+displayOptions           : {@{name=discount; enabled=True}, @{name=quantity; enabled=True}, @{name=timer; enabled=True},
+                           @{name=merchandisingType; value=other}...}
+textAd                   : @{line1=; line2=; headline=}
+merchant                 : @{id=douglas-j-aveda-institute-grand-rapids; uuid=3d6b8296-e3a4-47c8-9e6b-9775d573d715; name=Douglas J Aveda
+                           Institute; websiteUrl=http://www.douglasj.edu/; twitterUrl=; ratings=; facebookUrl=}
+options                  : {@{id=65275529; uuid=ef1bb990-6637-41d5-9ee4-15b437b7e765; bookable=False;
+                           buyUrl=https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529;
+                           customField=; details=System.Object[]; discount=; discountPercent=55; endAt=2042-01-26T04:59:59Z;
+                           expiresAt=2020-01-10T00:00:00Z; expiresInDays=90; externalUrl=; isLimitedQuantity=True; isSoldOut=False;
+                           maximumPurchaseQuantity=6; minimumPurchaseQuantity=1; price=; traits=System.Object[];
+                           redemptionLocations=System.Object[]; soldQuantity=-1; soldQuantityMessage=-1; specificAttributes=; status=open;
+                           title=Haircut and Botanical Treatment: Valid Tuesday–Friday; value=; isGuestCheckoutEligible=True;
+                           inventoryService=; customFields=System.Object[]}}
+says                     :
+salesforceLink           :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0]
+
+
+id                       : douglas-j-aveda-institute-grand-rapids-2
+uuid                     : 93ed5360-8f0a-4ca0-8126-a878535e02d9
+dealUrl                  : http://tracking.groupon.com/r?tsToken=US_AFF_0_209439_212556_0&url=https%3A%2F%2Fwww.groupon.com%2Fdeals%2Fdouglas
+                           -j-aveda-institute-grand-rapids-2%3Fz%3Dskip%26utm_medium%3Dafl%26utm_campaign%3D209439%26mediaId%3D212556%26utm_s
+                           ource%3DGPN
+title                    : $19.50 for Haircut and Botanical Treatment at Douglas J Aveda Institute ($44 Value)
+announcementTitle        : 55% Off Haircut Package at Douglas J Aveda Institute
+shortAnnouncementTitle   : Haircut with Aveda Treatment
+finePrint                : Valid only at Grand Rapids location. Appointment required. Limit 5 per person, may buy 1 additional as gift(s).
+                           Valid only for option purchased. All goods or services must be used by the same person. Merchant's standard
+                           cancellation policy applies (any fees not to exceed voucher price).
+highlightsHtml           : <p>Before the haircut, stylists nourish strands with an organic botanical conditioner</p>
+pitchHtml                : <ul>
+                             <li>Haircut and Botanical Treatment: Valid Tuesday–Friday</li>
+                           </ul>
+soldQuantity             : -1
+limitedQuantityRemaining :
+tippingPoint             : 0
+soldQuantityMessage      : -1
+placeholderUrl           : https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png
+grid4ImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t300x182.jpg
+grid6ImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t460x279.jpg
+largeImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t440x300.jpg
+mediumImageUrl           : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t100x100.jpg
+smallImageUrl            : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t50x50.jpg
+sidebarImageUrl          : https://img.grouponcdn.com/deal/344un4st2sSAT8xoTYAJX2psxT1v/34-1023x613/v1/t200x300.jpg
+status                   : open
+type                     : groupon
+accessType               : extended
+endAt                    : 2042-01-26T04:59:59Z
+startAt                  : 2017-09-22T04:00:00Z
+tippedAt                 : 2017-09-21T04:00:00Z
+areas                    : {}
+channels                 : {}
+dealTypes                : {}
+division                 : @{id=grand-rapids; name=Grand Rapids; timezone=Eastern Daylight Time; timezoneOffsetInSeconds=-14400;
+                           timezoneIdentifier=America/New_York; lat=42.9634; lng=-85.6681}
+grouponRating            :
+allowedInCart            : False
+isInviteOnly             : False
+shippingAddressRequired  : False
+isOptionListComplete     : True
+isMerchandisingDeal      : False
+isNowDeal                : False
+isSoldOut                : False
+isTipped                 : True
+isTravelBookableDeal     : False
+isGliveInventoryDeal     : False
+isAutoRefundEnabled      : False
+isGiftable               : True
+placementPriority        : nearby
+redemptionLocation       : Heartside-Downtown Grand Rapids
+locationNote             :
+vip                      :
+fulfillmentMethod        :
+tags                     : {@{name=Hair Cuts & Styling; uuid=d03a8723-1260-443f-9b7d-c1c698be6c51}, @{name=Salon - Haircut - Women;
+                           uuid=bead349e-b392-4d9b-a9a7-a7fba8052a9a}}
+displayOptions           : {@{name=discount; enabled=True}, @{name=quantity; enabled=True}, @{name=timer; enabled=True},
+                           @{name=merchandisingType; value=other}...}
+textAd                   : @{line1=; line2=; headline=}
+merchant                 : @{id=douglas-j-aveda-institute-grand-rapids; uuid=3d6b8296-e3a4-47c8-9e6b-9775d573d715; name=Douglas J Aveda
+                           Institute; websiteUrl=http://www.douglasj.edu/; twitterUrl=; ratings=; facebookUrl=}
+options                  : {@{id=65275529; uuid=ef1bb990-6637-41d5-9ee4-15b437b7e765; bookable=False;
+                           buyUrl=https://www.groupon.com/deals/douglas-j-aveda-institute-grand-rapids-2/confirmation?pledge_id=65275529;
+                           customField=; details=System.Object[]; discount=; discountPercent=55; endAt=2042-01-26T04:59:59Z;
+                           expiresAt=2020-01-10T00:00:00Z; expiresInDays=90; externalUrl=; isLimitedQuantity=True; isSoldOut=False;
+                           maximumPurchaseQuantity=6; minimumPurchaseQuantity=1; price=; traits=System.Object[];
+                           redemptionLocations=System.Object[]; soldQuantity=-1; soldQuantityMessage=-1; specificAttributes=; status=open;
+                           title=Haircut and Botanical Treatment: Valid Tuesday–Friday; value=; isGuestCheckoutEligible=True;
+                           inventoryService=; customFields=System.Object[]}}
+says                     :
+salesforceLink           :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].merchant
+
+
+id          : douglas-j-aveda-institute-grand-rapids
+uuid        : 3d6b8296-e3a4-47c8-9e6b-9775d573d715
+name        : Douglas J Aveda Institute
+websiteUrl  : http://www.douglasj.edu/
+twitterUrl  :
+ratings     :
+facebookUrl :
+
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].merchant.id
+douglas-j-aveda-institute-grand-rapids
+PS C:\users\luke\documents\powershell\scripts\groupontool> $deals.deals[0].merchant.name
+Douglas J Aveda Institute
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampleDeal = $deals.deals[0].merchant.name
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampleDeal
+Douglas J Aveda Institute
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampleDeal = [ordered] @{}
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampleDeal
+PS C:\users\luke\documents\powershell\scripts\groupontool> gettype($sampledeal)
+gettype : The term 'gettype' is not recognized as the name of a cmdlet, function, script file, or operable program. 
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ gettype($sampledeal)
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (gettype:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+gettype : The term 'gettype' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of
+the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ gettype($sampledeal)
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (gettype:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal.gettype()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     True     OrderedDictionary                        System.Object
+
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal += $deals.deals[0].merchant.name
+A hash table can only be added to another hash table.
+At line:1 char:1
++ $sampledeal += $deals.deals[0].merchant.name
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : AddHashTableToNonHashTable
+A hash table can only be added to another hash table.
+At line:1 char:1
++ $sampledeal += $deals.deals[0].merchant.name
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : AddHashTableToNonHashTable
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> $sampledeal += $deals.deals[0].merchant.name
+A hash table can only be added to another hash table.
+At line:1 char:1
++ $sampledeal += $deals.deals[0].merchant.name
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : AddHashTableToNonHashTable
+A hash table can only be added to another hash table.
+At line:1 char:1
++ $sampledeal += $deals.deals[0].merchant.name
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : AddHashTableToNonHashTable
+
+PS C:\users\luke\documents\powershell\scripts\groupontool> stop-transcript
+**********************
+Windows PowerShell transcript end
+End time: 20191012131225
+**********************
