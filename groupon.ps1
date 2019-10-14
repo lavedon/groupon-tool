@@ -25,6 +25,8 @@ $offset = '&offset=0&limit=250'
 $call = $URL + $Token + $division + $category + $offset;
 $deals = Invoke-RestMethod -Uri $call 
 
+Write-Host "Number of deals retrieved from $division is $($deals.deals.Length)";
+
 # The properites we are interested in:
 # Name, Website, GroupOn URL: $deals.deals[0].merchant.websiteUrl / name / 
 # Recent Deal #1: $deals.deals[0].title
@@ -89,7 +91,7 @@ th {
 <table>
 <caption>GroupOn Export</caption>
 <tr>
-    <th>Discount Percentage %</th><th>Name</th><th>City</th><th>Website</th><th>Phone Number</th><th>GroupOn URL</th>
+    <th>Name</th><th>MAX Discount %</th><th>City</th><th>Website</th><th>Phone Number</th><th>GroupOn URL</th>
     <th>Recent Deal #1</th><th>Date Deal Starts</th><th>Date Deal Ends</th><th>Tags</th>
     
 </tr>
@@ -105,21 +107,26 @@ $htmlpage = $htmlTop;
 
 for($i=0; $i -lt $deals.deals.length; $i++) {
     $fullDealURL = $deals.deals[$i].options[0].buyUrl;
-    $cleanDealURL = $fullDealURL -replace '(?<=confirmation).*';
-    $cleanDealURL = $cleanDealURL -replace 'confirmation';
+    $cleanDealURL = $fullDealURL -replace 'confirmation.*';
+    
+    try {
     $dealStartAt = $deals.deals[$i].options.pricingMetadata[0].offerBeginsAt;
-    $dealStartAt = $dealStartAt -replace '(?<=T).*';
-    $dealStartAt = $dealStartAt -replace 'T';
-
+    $dealStartAt = $dealStartAt -replace 'T.*';
+ 
     $dealEndsAt = $deals.deals[$i].options.pricingMetadata[0].offerEndsAt;
-    $dealEndsAt = $dealStartAt -replace '(?<=T).*';
-    $dealEndsAt = $dealStartAt -replace 'T';
+    $dealEndsAt = $dealEndsAt -replace 'T.*';
+    }
+    catch {
+        Write-Host "Could not get Beginning Ending info for deal #$i";
+    }
+
+    [int]$maxDiscount = $deals.deals[$i].options.discountPercent | Measure-Object -Maximum | select-object -ExpandProperty Maximum
     $websiteURL = $deals.deals[$i].merchant.websiteUrl;
 
     $newHTML = @"
     <tr>
-    <td>$($deals.deals[$i].options.discountPercent)</td>
     <td>$($deals.deals[$i].merchant.name)</td>
+    <td>$($maxDiscount)</td>
     <td>$($deals.deals[$i].division.name)</td>
     <td><a href='$($websiteURL)'>$($websiteURL)</a></td>
     <td>$($deals.deals[$i].options.redemptionLocations.phoneNumber)</td>
