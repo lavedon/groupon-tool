@@ -17,37 +17,6 @@ Write-Host { "selecting the deals"};
 
 # Only get Beauty and Spa deals
 # filters=category:beauty-and-spas
-
-$division = "&division_id=$($all_ids[57])";
-$category = '&filters=category:beauty-and-spas';
-$offset = '&offset=0&limit=250'
-
-$call = $URL + $Token + $division + $category + $offset;
-$deals = Invoke-RestMethod -Uri $call 
-
-Write-Host "Number of deals retrieved from $division is $($deals.deals.Length)";
-
-# The properites we are interested in:
-# Name, Website, GroupOn URL: $deals.deals[0].merchant.websiteUrl / name / 
-# Recent Deal #1: $deals.deals[0].title
-# *(new) Announcement Title: $deals.deals[0].announcementTitle
-# Date Deal Started: $deals.deals[0].options.startAt 
-# *(new) Ends: $deals.deals[0].options.endsAt
-# Deal Still Active $deals.deals[0].isNowDeal
-# Tags $deals.deals[0].tags (iterate through this)
-# Limited Quantity: $deals.deals[0].isLimitedQuantity
-# Number of Days Offer Lasts: $deals.deals[0].expiresInDays
-# Phone Number: $deals.deals[0].redemptionLocations.phoneNumber
-# City $deals.deals[0].division.name
-# Discount %: $deals.deals[0].discountPercent
-# $deals.deals[0].merchant.ratings?!
-# #####################################
-
-# Use Start-Sleep to pause between each call
-# Use a random number that gives a liberal amount of pause between each call
-# Now call the API to get the first 250 results
-# #############################################
-
 $htmlTop = @"
 <!DOCTYPE html>
 <html>
@@ -71,6 +40,8 @@ tr:hover {
 
 th, td {
         padding: 10px;
+        max-width: 400px;
+
 }
 th {
   background-color: #4CAF50;
@@ -85,10 +56,11 @@ th {
     background-color: #18777e;
 }
 </style>
+<script src="sorttable.js"></script>
   </head>
   <body>
 <h1>GroupOn Export</h1>
-<table>
+<table class="sortable">
 <caption>GroupOn Export</caption>
 <tr>
     <th>Name</th><th>MAX Discount %</th><th>City</th><th>Website</th><th>Phone Number</th><th>GroupOn URL</th>
@@ -104,6 +76,45 @@ $htmlBottom = @"
 "@
 $htmlpage = $htmlTop;
 
+# For Loop: for now try only 2 cities 
+
+for($d=0;$d -le $all_ids.Length; $d++) {
+
+$division = "&division_id=$($all_ids[$d])";
+$category = '&filters=category:beauty-and-spas';
+$offset = '&offset=0&limit=250'
+
+$call = $URL + $Token + $division + $category + $offset;
+$deals = Invoke-RestMethod -Uri $call 
+
+
+Write-Host "Number of deals retrieved from $division is $($deals.deals.Length)";
+# @TODO use offset if # of deals is over 250
+
+
+# The properites we are interested in:
+# Name, Website, GroupOn URL: $deals.deals[0].merchant.websiteUrl / name / 
+# Recent Deal #1: $deals.deals[0].title
+# *(new) Announcement Title: $deals.deals[0].announcementTitle
+# Date Deal Started: $deals.deals[0].options.startAt 
+# *(new) Ends: $deals.deals[0].options.endsAt
+# Deal Still Active $deals.deals[0].isNowDeal
+# Tags $deals.deals[0].tags (iterate through this)
+# Limited Quantity: $deals.deals[0].isLimitedQuantity
+# Number of Days Offer Lasts: $deals.deals[0].expiresInDays
+# Phone Number: $deals.deals[0].redemptionLocations.phoneNumber
+# City $deals.deals[0].division.name
+# Discount %: $deals.deals[0].discountPercent
+# $deals.deals[0].merchant.ratings?!
+# #####################################
+
+# Use Start-Sleep to pause between each call
+# Use a random number that gives a liberal amount of pause between each call
+# Now call the API to get the first 250 results
+# #############################################
+
+
+
 
 for($i=0; $i -lt $deals.deals.length; $i++) {
     $fullDealURL = $deals.deals[$i].options[0].buyUrl;
@@ -117,7 +128,7 @@ for($i=0; $i -lt $deals.deals.length; $i++) {
     $dealEndsAt = $dealEndsAt -replace 'T.*';
     }
     catch {
-        Write-Host "Could not get Beginning Ending info for deal #$i";
+        Write-Host "Could not get Beginning or Ending info for $division deal #$i";
     }
 
     [int]$maxDiscount = $deals.deals[$i].options.discountPercent | Measure-Object -Maximum | select-object -ExpandProperty Maximum
@@ -143,6 +154,9 @@ for($i=0; $i -lt $deals.deals.length; $i++) {
     $htmlpage = $htmlpage + $newHTML;
     
 }
+
+Start-Sleep -Seconds 5
+} #end multi-city for loop
 
 $htmlpage = $htmlpage + $htmlbottom;
 $htmlpage | Out-File .\report.html
