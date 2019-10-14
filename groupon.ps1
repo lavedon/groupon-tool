@@ -18,15 +18,11 @@ Write-Host { "selecting the deals"};
 # Only get Beauty and Spa deals
 # filters=category:beauty-and-spas
 
-$selector = "division_id=$($all_ids[57])&offset=0&limit=250";
+$division = "&division_id=$($all_ids[57])";
+$category = '&filters=category:beauty-and-spas';
+$offset = '&offset=0&limit=250'
 
-Write-Host { "selector is $($selector)"};
-# Use Start-Sleep to pause between each call
-# Use a random number that gives a liberal amount of pause between each call
-# Now call the API to get the first 250 results
-
-$call = $URL + $Token + "?" + $selector;
-
+$call = $URL + $Token + $division + $category + $offset;
 $deals = Invoke-RestMethod -Uri $call 
 
 # The properites we are interested in:
@@ -45,14 +41,19 @@ $deals = Invoke-RestMethod -Uri $call
 # $deals.deals[0].merchant.ratings?!
 # #####################################
 
+# Use Start-Sleep to pause between each call
+# Use a random number that gives a liberal amount of pause between each call
+# Now call the API to get the first 250 results
+# #############################################
+
 $htmlTop = @"
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>GroupOn Deals</title>
-  <style type="text/css">
-   
+  <style type='text/css'>
+  
 table {
     border: 5px dashed black;
 }
@@ -88,9 +89,9 @@ th {
 <table>
 <caption>GroupOn Export</caption>
 <tr>
-    <th>Name</th><th>City</th><th>Website</th><th>Phone Number</th><th>GroupOn URL</th>
-    <th>Recent Deal #1</th><th>Date Deal Started</th><th>Deal Still Active</th><th>Tags</th>
-    <th>Limited Quantity?</th><th>Discount Percentage %</th>
+    <th>Discount Percentage %</th><th>Name</th><th>City</th><th>Website</th><th>Phone Number</th><th>GroupOn URL</th>
+    <th>Recent Deal #1</th><th>Date Deal Starts</th><th>Date Deal Ends</th><th>Tags</th>
+    
 </tr>
 "@
 
@@ -102,27 +103,38 @@ $htmlBottom = @"
 $htmlpage = $htmlTop;
 
 
-
 for($i=0; $i -lt $deals.deals.length; $i++) {
+    $fullDealURL = $deals.deals[$i].options[0].buyUrl;
+    $cleanDealURL = $fullDealURL -replace '(?<=confirmation).*';
+    $cleanDealURL = $cleanDealURL -replace 'confirmation';
+    $dealStartAt = $deals.deals[$i].options.pricingMetadata[0].offerBeginsAt;
+    $dealStartAt = $dealStartAt -replace '(?<=T).*';
+    $dealStartAt = $dealStartAt -replace 'T';
+
+    $dealEndsAt = $deals.deals[$i].options.pricingMetadata[0].offerEndsAt;
+    $dealEndsAt = $dealStartAt -replace '(?<=T).*';
+    $dealEndsAt = $dealStartAt -replace 'T';
+    $websiteURL = $deals.deals[$i].merchant.websiteUrl;
+
     $newHTML = @"
     <tr>
+    <td>$($deals.deals[$i].options.discountPercent)</td>
     <td>$($deals.deals[$i].merchant.name)</td>
     <td>$($deals.deals[$i].division.name)</td>
-    <td>$($deals.deals[$i].merchant.websiteUrl)</td>
-    <td>$($deals.deals[$i].redemptionLocations.phoneNumber)</td>
-    <td> .merchant GROUPON URL?????? for got this one </td>
+    <td><a href='$($websiteURL)'>$($websiteURL)</a></td>
+    <td>$($deals.deals[$i].options.redemptionLocations.phoneNumber)</td>
+    <td><a href='$($cleanDealURL)'>$($cleanDealURL)</a></td>
     <td>$($deals.deals[$i].title)</td>
-    <td>$($deals.deals[$i].options.startAt)</td>
-    <td>$($deals.deals[$i].isNowDeal)</td>
-    <td>Put TAGS HERE</td>
-    <td>$($deals.deals[$i].isLimitedQuantity)</td>
-    <td>$($deals.deals[$i].discountPercent)</td>
-    <td>MERCHANT RATING?!?</td>
+    <td>$($dealStartAt)</td>
+    <td>$($dealEndsAt)</td>
+    <td>$($deals.deals[$i].tags[0].name)</td>
+   
+    
     </tr>
 "@
 
     $htmlpage = $htmlpage + $newHTML;
-    write-host { $htmlpage };
+    
 }
 
 $htmlpage = $htmlpage + $htmlbottom;
