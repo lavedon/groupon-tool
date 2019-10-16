@@ -114,7 +114,7 @@ Write-Host "Number of deals retrieved from $division is $($deals.deals.Length)";
 # #############################################
 
 
-
+[system.collections.arraylist]$alldeals = @();
 
 for($i=0; $i -lt $deals.deals.length; $i++) {
     $fullDealURL = $deals.deals[$i].options[0].buyUrl;
@@ -134,18 +134,31 @@ for($i=0; $i -lt $deals.deals.length; $i++) {
     [int]$maxDiscount = $deals.deals[$i].options.discountPercent | Measure-Object -Maximum | select-object -ExpandProperty Maximum
     $websiteURL = $deals.deals[$i].merchant.websiteUrl;
 
+$dealCleaned = @{
+    merchantName = $deals.deals[$i].merchant.name;
+    maxDiscount = $maxDiscount;
+    divisionName = $deals.deals[$i].division.name;
+    websiteURL = $websiteUrl;
+    phoneNumber = $deals.deals[$i].options.redemptionLocations.phoneNumber;
+    cleanDealURL = $cleanDealURL;
+    dealTitle = $deals.deals[$i].title;
+    dealStartAt = $dealStartAt;
+    dealEndsAt = $dealEndsAt;
+    tags = @($deals.deals[$i].tags)
+}
+
     $newHTML = @"
     <tr>
-    <td>$($deals.deals[$i].merchant.name)</td>
-    <td>$($maxDiscount)</td>
-    <td>$($deals.deals[$i].division.name)</td>
-    <td><a href='$($websiteURL)'>$($websiteURL)</a></td>
-    <td>$($deals.deals[$i].options.redemptionLocations.phoneNumber)</td>
-    <td><a href='$($cleanDealURL)'>$($cleanDealURL)</a></td>
-    <td>$($deals.deals[$i].title)</td>
-    <td>$($dealStartAt)</td>
-    <td>$($dealEndsAt)</td>
-    <td>$($deals.deals[$i].tags[0].name)</td>
+    <td>$($dealCleaned.merchantName)</td>
+    <td>$($dealCleaned.maxDiscount)</td>
+    <td>$($dealCleaned.divisionName)</td>
+    <td><a href='$($dealCleaned.websiteURL)'>$($dealsCleaned.websiteURL)</a></td>
+    <td>$($dealCleaned.phoneNumber)</td>
+    <td><a href='$($dealCleaned.cleanDealURL)'>$($cleanDealURL)</a></td>
+    <td>$($dealCleaned.dealTitle)</td>
+    <td>$($dealCleaned.dealStartAt)</td>
+    <td>$($dealCleaned.dealEndsAt)</td>
+    <td>$($dealCleaned.tags[0].name)</td>
    
     
     </tr>
@@ -155,8 +168,11 @@ for($i=0; $i -lt $deals.deals.length; $i++) {
     
 }
 
+$allDeals += $dealCleaned;
+
 Start-Sleep -Seconds 5
 } #end multi-city for loop
 
 $htmlpage = $htmlpage + $htmlbottom;
 $htmlpage | Out-File .\report.html
+$myObject | ConvertTo-Json -depth 15 | Set-Content -Path C:allDeals.json 
