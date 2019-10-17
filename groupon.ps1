@@ -1,3 +1,4 @@
+[system.collections.arraylist]$alldeals = @();
 # Sytanx is $URL + $Token + $Selects
 $Token = Get-Content .\mytoken.txt;
 $URL = "https://partner-api.groupon.com/deals.json?";
@@ -17,6 +18,121 @@ Write-Host { "selecting the deals"};
 
 # Only get Beauty and Spa deals
 # filters=category:beauty-and-spas
+
+
+for($d=0;$d -lt $all_ids.Length; $d++) {
+
+$division = "&division_id=$($all_ids[$d])";
+$category = '&filters=category:beauty-and-spas';
+$offset = '&offset=0&limit=250'
+
+$call = $URL + $Token + $division + $category + $offset;
+$deals = Invoke-RestMethod -Uri $call 
+
+
+Write-Host { "Number of deals retrieved from $division is $($deals.deals.Length)"};
+# @TODO use offset if # of deals is over 250
+
+
+# The properites we are interested in:
+# Name, Website, GroupOn URL: $deals.deals[0].merchant.websiteUrl / name / 
+# Recent Deal #1: $deals.deals[0].title
+# *(new) Announcement Title: $deals.deals[0].announcementTitle
+# Date Deal Started: $deals.deals[0].options.startAt 
+# *(new) Ends: $deals.deals[0].options.endsAt
+# Deal Still Active $deals.deals[0].isNowDeal
+# Tags $deals.deals[0].tags (iterate through this)
+# Limited Quantity: $deals.deals[0].isLimitedQuantity
+# Number of Days Offer Lasts: $deals.deals[0].expiresInDays
+# Phone Number: $deals.deals[0].redemptionLocations.phoneNumber
+# City $deals.deals[0].division.name
+# Discount %: $deals.deals[0].discountPercent
+# $deals.deals[0].merchant.ratings?!
+# #####################################
+
+# Use Start-Sleep to pause between each call
+# Use a random number that gives a liberal amount of pause between each call
+# Now call the API to get the first 250 results
+# #############################################
+
+
+
+# Convert each deal in the city
+for($i=0; $i -lt $deals.deals.length; $i++) {
+    $fullDealURL = $deals.deals[$i].options[0].buyUrl;
+    $cleanDealURL = $fullDealURL -replace 'confirmation.*';
+    
+    try {
+    $dealStartAt = $deals.deals[$i].options.pricingMetadata[0].offerBeginsAt;
+    $dealStartAt = $dealStartAt -replace 'T.*';
+ 
+    $dealEndsAt = $deals.deals[$i].options.pricingMetadata[0].offerEndsAt;
+    $dealEndsAt = $dealEndsAt -replace 'T.*';
+    }
+    catch {
+        Write-Host "Could not get Beginning or Ending info for $division deal #$i";
+    }
+
+    [int]$maxDiscount = $deals.deals[$i].options.discountPercent | Measure-Object -Maximum | select-object -ExpandProperty Maximum
+    $websiteURL = $deals.deals[$i].merchant.websiteUrl;
+
+$dealCleaned = @{
+    merchantName = $deals.deals[$i].merchant.name;
+    maxDiscount = $maxDiscount;
+    divisionName = $deals.deals[$i].division.name;
+    websiteURL = $websiteUrl;
+    phoneNumber = $deals.deals[$i].options.redemptionLocations.phoneNumber;
+    cleanDealURL = $cleanDealURL;
+    dealTitle = $deals.deals[$i].title;
+    dealStartAt = $dealStartAt;
+    dealEndsAt = $dealEndsAt;
+    tags = @($deals.deals[$i].tags)
+}
+$allDeals += $dealCleaned;
+
+
+}
+
+#Cut deals over 55
+#Add price to clean deal?
+
+<#
+    $newHTML = @"
+    <tr>
+    <td>$($dealCleaned.merchantName)</td>
+    <td>$($dealCleaned.maxDiscount)</td>
+    <td>$($dealCleaned.divisionName)</td>
+    <td><a href='$($dealCleaned.websiteURL)'>$($dealsCleaned.websiteURL)</a></td>
+    <td>$($dealCleaned.phoneNumber)</td>
+    <td><a href='$($dealCleaned.cleanDealURL)'>$($cleanDealURL)</a></td>
+    <td>$($dealCleaned.dealTitle)</td>
+    <td>$($dealCleaned.dealStartAt)</td>
+    <td>$($dealCleaned.dealEndsAt)</td>
+    <td>$($dealCleaned.tags[0].name)</td>
+   
+    
+    </tr>
+"@
+
+    $htmlpage = $htmlpage + $newHTML;
+    
+}
+#>
+
+
+
+Start-Sleep -Seconds 5
+} #end multi-city for loop
+Write-Host { "Exporting all INFO to Json file: dealsDump.json"}
+$deals | ConvertTo-Json -Depth 15 | Set-Content -Path C:dealsDump.json
+
+Write-Host { "Exporting all cleaned deals to allDeals.json"}
+$allDeals | ConvertTo-Json -depth 15 | Set-Content -Path C:allDeals.json
+
+$sortedbyDiscount = $allDeals | Sort-Object { $_.maxDiscount }
+Write-Host { "Exporting all sorted by max discount deals to sortedDeals.json" }
+$sortedbyDiscount | ConvertTo-Json -Depth 15 | Set-Content -Path C:sortedDeals.json
+
 $htmlTop = @"
 <!DOCTYPE html>
 <html>
@@ -74,105 +190,6 @@ $htmlBottom = @"
 </body>
 </html>
 "@
-$htmlpage = $htmlTop;
-
-# For Loop: for now try only 2 cities 
-
-for($d=0;$d -le $all_ids.Length; $d++) {
-
-$division = "&division_id=$($all_ids[$d])";
-$category = '&filters=category:beauty-and-spas';
-$offset = '&offset=0&limit=250'
-
-$call = $URL + $Token + $division + $category + $offset;
-$deals = Invoke-RestMethod -Uri $call 
-
-
-Write-Host "Number of deals retrieved from $division is $($deals.deals.Length)";
-# @TODO use offset if # of deals is over 250
-
-
-# The properites we are interested in:
-# Name, Website, GroupOn URL: $deals.deals[0].merchant.websiteUrl / name / 
-# Recent Deal #1: $deals.deals[0].title
-# *(new) Announcement Title: $deals.deals[0].announcementTitle
-# Date Deal Started: $deals.deals[0].options.startAt 
-# *(new) Ends: $deals.deals[0].options.endsAt
-# Deal Still Active $deals.deals[0].isNowDeal
-# Tags $deals.deals[0].tags (iterate through this)
-# Limited Quantity: $deals.deals[0].isLimitedQuantity
-# Number of Days Offer Lasts: $deals.deals[0].expiresInDays
-# Phone Number: $deals.deals[0].redemptionLocations.phoneNumber
-# City $deals.deals[0].division.name
-# Discount %: $deals.deals[0].discountPercent
-# $deals.deals[0].merchant.ratings?!
-# #####################################
-
-# Use Start-Sleep to pause between each call
-# Use a random number that gives a liberal amount of pause between each call
-# Now call the API to get the first 250 results
-# #############################################
-
-
-[system.collections.arraylist]$alldeals = @();
-
-for($i=0; $i -lt $deals.deals.length; $i++) {
-    $fullDealURL = $deals.deals[$i].options[0].buyUrl;
-    $cleanDealURL = $fullDealURL -replace 'confirmation.*';
-    
-    try {
-    $dealStartAt = $deals.deals[$i].options.pricingMetadata[0].offerBeginsAt;
-    $dealStartAt = $dealStartAt -replace 'T.*';
- 
-    $dealEndsAt = $deals.deals[$i].options.pricingMetadata[0].offerEndsAt;
-    $dealEndsAt = $dealEndsAt -replace 'T.*';
-    }
-    catch {
-        Write-Host "Could not get Beginning or Ending info for $division deal #$i";
-    }
-
-    [int]$maxDiscount = $deals.deals[$i].options.discountPercent | Measure-Object -Maximum | select-object -ExpandProperty Maximum
-    $websiteURL = $deals.deals[$i].merchant.websiteUrl;
-
-$dealCleaned = @{
-    merchantName = $deals.deals[$i].merchant.name;
-    maxDiscount = $maxDiscount;
-    divisionName = $deals.deals[$i].division.name;
-    websiteURL = $websiteUrl;
-    phoneNumber = $deals.deals[$i].options.redemptionLocations.phoneNumber;
-    cleanDealURL = $cleanDealURL;
-    dealTitle = $deals.deals[$i].title;
-    dealStartAt = $dealStartAt;
-    dealEndsAt = $dealEndsAt;
-    tags = @($deals.deals[$i].tags)
-}
-
-    $newHTML = @"
-    <tr>
-    <td>$($dealCleaned.merchantName)</td>
-    <td>$($dealCleaned.maxDiscount)</td>
-    <td>$($dealCleaned.divisionName)</td>
-    <td><a href='$($dealCleaned.websiteURL)'>$($dealsCleaned.websiteURL)</a></td>
-    <td>$($dealCleaned.phoneNumber)</td>
-    <td><a href='$($dealCleaned.cleanDealURL)'>$($cleanDealURL)</a></td>
-    <td>$($dealCleaned.dealTitle)</td>
-    <td>$($dealCleaned.dealStartAt)</td>
-    <td>$($dealCleaned.dealEndsAt)</td>
-    <td>$($dealCleaned.tags[0].name)</td>
-   
-    
-    </tr>
-"@
-
-    $htmlpage = $htmlpage + $newHTML;
-    
-}
-
-$allDeals += $dealCleaned;
-
-Start-Sleep -Seconds 5
-} #end multi-city for loop
-
-$htmlpage = $htmlpage + $htmlbottom;
+$htmlpage = $htmlTop + $htmlpage + $htmlbottom;
 $htmlpage | Out-File .\report.html
-$myObject | ConvertTo-Json -depth 15 | Set-Content -Path C:allDeals.json 
+ 
