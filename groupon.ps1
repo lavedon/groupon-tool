@@ -70,7 +70,7 @@ for($i=0; $i -lt $deals.deals.length; $i++) {
     $dealEndsAt = $dealEndsAt -replace 'T.*';
     }
     catch {
-        Write-Host "Could not get Beginning or Ending info for $division deal #$i";
+        Write-Debug "Could not get Beginning or Ending info for $division deal #$i";
     }
 
     [int]$maxDiscount = $deals.deals[$i].options.discountPercent | Measure-Object -Maximum | select-object -ExpandProperty Maximum
@@ -96,29 +96,6 @@ $allDeals += $dealCleaned;
 #Cut deals over 55
 #Add price to clean deal?
 
-<#
-    $newHTML = @"
-    <tr>
-    <td>$($dealCleaned.merchantName)</td>
-    <td>$($dealCleaned.maxDiscount)</td>
-    <td>$($dealCleaned.divisionName)</td>
-    <td><a href='$($dealCleaned.websiteURL)'>$($dealsCleaned.websiteURL)</a></td>
-    <td>$($dealCleaned.phoneNumber)</td>
-    <td><a href='$($dealCleaned.cleanDealURL)'>$($cleanDealURL)</a></td>
-    <td>$($dealCleaned.dealTitle)</td>
-    <td>$($dealCleaned.dealStartAt)</td>
-    <td>$($dealCleaned.dealEndsAt)</td>
-    <td>$($dealCleaned.tags[0].name)</td>
-   
-    
-    </tr>
-"@
-
-    $htmlpage = $htmlpage + $newHTML;
-    
-}
-#>
-
 
 
 Start-Sleep -Seconds 5
@@ -133,6 +110,32 @@ $sortedbyDiscount = $allDeals | Sort-Object { $_.maxDiscount }
 Write-Host { "Exporting all sorted by max discount deals to sortedDeals.json" }
 $sortedbyDiscount | ConvertTo-Json -Depth 15 | Set-Content -Path C:sortedDeals.json
 
+Write-Host "Making HTML file";
+
+$htmlBody = "";
+
+$allDeals | foreach-object { 
+    $newHTML = @"
+    <tr>
+    <td>$($_.merchantName)</td>
+    <td>$($_.maxDiscount)</td>
+    <td>$($_.divisionName)</td>
+    <td><a href='$($_.websiteURL)'>$($_.websiteURL)</a></td>
+    <td>$($_.phoneNumber)</td>
+    <td><a href='$($_.cleanDealURL)'>$($_.cleanDealURL)</a></td>
+    <td>$($_.dealTitle)</td>
+    <td>$($_.dealStartAt)</td>
+    <td>$($_.dealEndsAt)</td>
+    <td>$($_.tags[0].name)</td>
+   
+    
+    </tr>
+"@
+
+    $htmlBody += $newHTML;
+    
+}
+#>
 $htmlTop = @"
 <!DOCTYPE html>
 <html>
@@ -192,4 +195,5 @@ $htmlBottom = @"
 "@
 $htmlpage = $htmlTop + $htmlpage + $htmlbottom;
 $htmlpage | Out-File .\report.html
- 
+# Export a CSV file
+$allDeals | sort-object { $_.maxDiscount } | select-object @{n="Tags"; e={$_.tags[0].name}}, @{n="Name"; e={$_.merchantName}}, @{n="City"; e={$_.divisionName}}, @{n="Discount"; e={$_.maxDiscount}}, @{n="Website URL"; e={$_.websiteURL}}, @{n="Phone Number"; e={$_.phoneNumber[0]}}, @{n="GroupOn URL"; e={$_.cleanDealURL}}, @{n="Recent Deal"; e={$_.dealTitle}}, @{n="Deal Start Date"; e={$_.dealStartAt}}, @{n="Deal End Date"; e={$_.dealEndsAt}} | Export-Csv -Path .\ed-export-with-city.csv
